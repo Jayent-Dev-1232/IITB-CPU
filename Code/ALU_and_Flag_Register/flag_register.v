@@ -23,9 +23,9 @@ module flag_register (
     mux2 M1 (.d0(overflow_flag), .d1(overflow_in), .sel(write_enable), .y(d_overflow));
     mux2 M2 (.d0(negative_flag), .d1(negative_in), .sel(write_enable), .y(d_negative));
     mux2 M3 (.d0(zero_flag),     .d1(zero_in),     .sel(write_enable), .y(d_zero));
-    dff_async_reset FF0 (.clk(clk), .rst_n(rst_n), .d(d_carry),    .q(carry_flag));
-    dff_async_reset FF1 (.clk(clk), .rst_n(rst_n), .d(d_overflow), .q(overflow_flag));
-    dff_async_reset FF2 (.clk(clk), .rst_n(rst_n), .d(d_negative), .q(negative_flag));
-    dff_async_reset FF3 (.clk(clk), .rst_n(rst_n), .d(d_zero),     .q(zero_flag));
+    dff_async FF0 (.clk(clk), .rst_n(rst_n), .d(d_carry),    .q(carry_flag));
+    dff_async FF1 (.clk(clk), .rst_n(rst_n), .d(d_overflow), .q(overflow_flag));
+    dff_async FF2 (.clk(clk), .rst_n(rst_n), .d(d_negative), .q(negative_flag));
+    dff_async FF3 (.clk(clk), .rst_n(rst_n), .d(d_zero),     .q(zero_flag));
 
 endmodule
