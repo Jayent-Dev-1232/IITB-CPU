@@ -1,0 +1,141 @@
+module control_decoder (
+    input  [26:0] opcode_in,     // 27-bit input: [26:23]=Y0Y1X0X1, [22:0]=opcodes
+    input  [3:0]  break_flags,   // [3:0] = B4B3B2B1 (B4 is MSB)
+    output [17:0] control        // c1 to c18 control signals
+);
+
+    // Extract 23-bit one-hot encoded opcode (LSBs)
+    wire [22:0] opcode = opcode_in[22:0];
+    
+    // Extract register select bits from opcode_in[26:23]
+    // opcode_in[26:23] = Y0Y1X0X1
+    wire Y0 = opcode_in[26];
+    wire Y1 = opcode_in[25];
+    wire X0 = opcode_in[24];
+    wire X1 = opcode_in[23];
+    
+    // Define opcode positions (one-hot encoding)
+    localparam INOOP     = 0;
+    localparam INPUTC    = 1;
+    localparam INPUTCF   = 2;
+    localparam INPUTD    = 3;
+    localparam INPUTDF   = 4;
+    localparam MOVE      = 5;
+    localparam LOADI     = 6;
+    localparam ADD       = 7;
+    localparam ADDI      = 8;
+    localparam SUB       = 9;
+    localparam SUBI      = 10;
+    localparam LOAD      = 11;
+    localparam LOADF     = 12;
+    localparam STORE     = 13;
+    localparam STOREF    = 14;
+    localparam SHIFTL    = 15;
+    localparam SHIFTR    = 16;
+    localparam CMP       = 17;
+    localparam JUMP      = 18;
+    localparam BRE_BRZ   = 19;
+    localparam BRNE_BRNZ = 20;
+    localparam BRG       = 21;
+    localparam BRGE      = 22;
+    
+    // Control signal assignments based on table
+    // c1: DM21_WRITE_ENABLE
+    assign control[0] = opcode[STORE] | opcode[STOREF];
+    
+    // c2: PROGRAM_COUNTER_MUX
+    assign control[1] = opcode[INPUTC] | opcode[INPUTCF] | opcode[INPUTD] | 
+                        opcode[INPUTDF] | opcode[MOVE] | opcode[LOADI] | 
+                        opcode[ADD] | opcode[ADDI] | opcode[SUB] | opcode[SUBI] | 
+                        opcode[LOAD] | opcode[LOADF] | opcode[STORE] | opcode[STOREF] | 
+                        opcode[SHIFTL] | opcode[SHIFTR] | opcode[CMP] | 
+                        (opcode[JUMP] & break_flags[0]) |  // B1
+                        (opcode[BRE_BRZ] & break_flags[1]) |  // B2
+                        (opcode[BRNE_BRNZ] & break_flags[2]) |  // B3
+                        (opcode[BRGE] & break_flags[3]);  // B4 (MSB)
+    
+    // c3: PROGRAM_COUNTER_WRITE_EN
+    assign control[2] = opcode[INPUTC] | opcode[INPUTCF] | opcode[INPUTD] | 
+                        opcode[INPUTDF] | opcode[MOVE] | opcode[LOADI] | 
+                        opcode[ADD] | opcode[ADDI] | opcode[SUB] | opcode[SUBI] | 
+                        opcode[LOAD] | opcode[LOADF] | opcode[STORE] | opcode[STOREF] | 
+                        opcode[SHIFTL] | opcode[SHIFTR] | opcode[CMP] | 
+                        opcode[JUMP] | opcode[BRE_BRZ] | opcode[BRNE_BRNZ] | 
+                        opcode[BRG] | opcode[BRGE];
+    
+    // c4: REGISTERS_PORT0_SELECT - X1/Y1 selection
+    assign control[3] = opcode[INPUTCF] | opcode[INPUTD] | opcode[INPUTDF] | 
+                        opcode[MOVE] | opcode[ADD] | opcode[ADDI] | 
+                        opcode[SUB] | opcode[SUBI] | opcode[LOADF] | 
+                        opcode[STOREF] | opcode[SHIFTL] | opcode[SHIFTR] | 
+                        opcode[CMP];
+    
+    // c5: REGISTERS_PORT0_SELECT - X0/Y0 selection
+    assign control[4] = opcode[INPUTCF] | opcode[INPUTDF] | opcode[MOVE] | 
+                        opcode[ADD] | opcode[ADDI] | opcode[SUB] | opcode[SUBI] | 
+                        opcode[LOADF] | opcode[STOREF] | opcode[CMP];
+    
+    // c6: REGISTERS_PORT1_SELECT - Y1 selection
+    assign control[5] = opcode[ADD] | opcode[SUB] | opcode[STORE] | 
+                        opcode[STOREF] | opcode[CMP];
+    
+    // c7: REGISTERS_PORT1_SELECT - Y0 selection
+    assign control[6] = opcode[ADD] | opcode[SUB] | opcode[STORE] | 
+                        opcode[STOREF] | opcode[CMP];
+    
+    // c8: REGISTERS_WRITE_SELECT - X1 selection
+    assign control[7] = opcode[MOVE] | opcode[LOADI] | opcode[ADD] | 
+                        opcode[ADDI] | opcode[SUB] | opcode[SUBI] | 
+                        opcode[LOAD] | opcode[LOADF] | opcode[SHIFTL] | 
+                        opcode[SHIFTR];
+    
+    // c9: REGISTERS_WRITE_SELECT - X0 selection
+    assign control[8] = opcode[MOVE] | opcode[LOADI] | opcode[ADD] | 
+                        opcode[ADDI] | opcode[SUB] | opcode[SUBI] | 
+                        opcode[LOAD] | opcode[LOADF] | opcode[SHIFTL] | 
+                        opcode[SHIFTR];
+    
+    // c10: REGISTERS_WRITE_ENABLE
+    assign control[9] = opcode[INPUTC] | opcode[INPUTCF] | opcode[INPUTD] | 
+                        opcode[INPUTDF] | opcode[MOVE] | opcode[LOADI] | 
+                        opcode[ADD] | opcode[ADDI] | opcode[SUB] | opcode[SUBI] | 
+                        opcode[LOAD] | opcode[LOADF] | opcode[SHIFTL] | 
+                        opcode[SHIFTR];
+    
+    // c11: ALU_SOURCE2_MUX
+    assign control[10] = opcode[INPUTC] | opcode[INPUTCF] | opcode[INPUTD] | 
+                         opcode[INPUTDF] | opcode[MOVE] | opcode[LOADI] | 
+                         opcode[ADD] | opcode[ADDI] | opcode[SUB] | opcode[SUBI] | 
+                         opcode[LOAD] | opcode[LOADF] | opcode[STORE] | 
+                         opcode[STOREF] | opcode[SHIFTL] | opcode[SHIFTR];
+    
+    // c12: ALU_SELECT1
+    assign control[11] = opcode[INPUTCF] | opcode[INPUTDF] | opcode[MOVE] | 
+                         opcode[ADDI] | opcode[SUBI] | opcode[LOAD] | 
+                         opcode[LOADF] | opcode[STOREF] | opcode[CMP];
+    
+    // c13: ALU_SELECT0
+    assign control[12] = opcode[INPUTD] | opcode[INPUTDF] | opcode[ADD] | 
+                         opcode[ADDI] | opcode[SUB] | opcode[SUBI] | 
+                         opcode[LOAD] | opcode[LOADF];
+    
+    // c14: ALU_SELECT0 (another bit)
+    assign control[13] = opcode[SUB] | opcode[SUBI] | opcode[CMP];
+    
+    // c15: FLAGS_ENABLE
+    assign control[14] = opcode[ADD] | opcode[ADDI] | opcode[SUB] | 
+                         opcode[SUBI] | opcode[CMP] | opcode[SHIFTL] | 
+                         opcode[SHIFTR];
+    
+    // c16: ALU_PRINT_MUX
+    assign control[15] = opcode[INPUTC] | opcode[INPUTD] | opcode[SHIFTL] | 
+                         opcode[SHIFTR];
+    
+    // c17: DM21_INPUT_MUX
+    assign control[16] = opcode[STORE] | opcode[LOADI] | opcode[LOADF];
+    
+    // c18: DM21_WRITE_ENABLE
+    assign control[17] = opcode[INPUTD] | opcode[INPUTDF] | opcode[LOADI] | 
+                         opcode[LOADF];
+
+endmodule

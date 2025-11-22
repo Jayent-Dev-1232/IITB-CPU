@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/simulation/modelsim
+vcontrol_unit
+Z1 !s110 1763774892
+!i10b 1
+!s100 PniGz?9V<Q5WW6gmdV4>h3
+IOYJ8F<VFQYo4?aE7jgNoL1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1763774510
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/control_unit.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/control_unit.v
+L0 2
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1763774892.000000
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/control_unit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit|E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/control_unit.v|
+!i113 1
+Z5 o-vlog01compat -work work
+Z6 !s92 -vlog01compat -work work +incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit
+Z7 tCvgOpt 0
+vtestbench
+R1
+!i10b 1
+!s100 n_0gbTFA>YVO=KiKZ1^JI3
+I1kddYJXH=c;A^02QS_Udg0
+R2
+R0
+w1763774868
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit|E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v|
+!i113 1
+R5
+R6
+R7

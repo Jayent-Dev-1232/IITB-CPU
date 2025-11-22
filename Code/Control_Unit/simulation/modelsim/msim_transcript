@@ -1,0 +1,67 @@
+# Reading C:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
+# do Control_Unit_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit {E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/control_unit.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 06:58:12 on Nov 22,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit" E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/control_unit.v 
+# -- Compiling module control_unit
+# 
+# Top level modules:
+# 	control_unit
+# End time: 06:58:12 on Nov 22,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit {E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 06:58:12 on Nov 22,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit" E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v 
+# -- Compiling module testbench
+# ** Warning: E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v(40): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v(45): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v(50): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v(55): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v(60): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v(65): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v(70): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# 
+# Top level modules:
+# 	testbench
+# End time: 06:58:12 on Nov 22,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 7
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L fiftyfivenm_ver -L rtl_work -L work -voptargs="+acc"  testbench
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L fiftyfivenm_ver -L rtl_work -L work -voptargs=""+acc"" testbench 
+# Start time: 06:58:12 on Nov 22,2025
+# Loading work.testbench
+# Loading work.control_unit
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# Time=20000 | opcode_in=000000000000000000010000000 | break_flag=0000 | control=000010101000000100
+# Time=30000 | opcode_in=000000000000000000100000000 | break_flag=0000 | control=000010111000000100
+# Time=40000 | opcode_in=000000000100000000000000000 | break_flag=0000 | control=000011100000000100
+# Time=50000 | opcode_in=000001000000000000000000000 | break_flag=1000 | control=000000000000000100
+# Time=60000 | opcode_in=000010000000000000000000000 | break_flag=0100 | control=000000000000000100
+# Time=70000 | opcode_in=000100000000000000000000000 | break_flag=0010 | control=000000000000000100
+# Time=80000 | opcode_in=001000000000000000000000000 | break_flag=0001 | control=000000000000000100
+# Time=90000 | opcode_in=000000000000000000000000000 | break_flag=0000 | control=000000000000000100
+# ** Note: $finish    : E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v(79)
+#    Time: 90 ns  Iteration: 0  Instance: /testbench
+# 1
+# Break in Module testbench at E:/IITB/3rd_Semester/IITB-CPU/Code/Control_Unit/testbench.v line 79
+# End time: 07:04:37 on Nov 22,2025, Elapsed time: 0:06:25
+# Errors: 0, Warnings: 0
