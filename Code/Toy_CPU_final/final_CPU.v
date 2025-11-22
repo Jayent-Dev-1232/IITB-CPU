@@ -30,6 +30,7 @@ module final_CPU (
     wire [1:0] port_B_select;
     wire [1:0] alu_select_input;
 
+    // Data memory_array input: either switches (when c[15]==1) or register B
     assign DMEM_data_in = c[15] ? switches[7:0] : register_B_data_out;
 
     data_memory DMEM (
@@ -124,25 +125,106 @@ module final_CPU (
     );
 endmodule
 
-module testbench;
-    reg reset,clk;
-    wire [7:0] bluff;
-    final_CPU dut(16'b0000000000000000, clk, reset);
 
+module final_CPU_tb;
+
+    reg clk;
+    reg reset;
+    reg [15:0] switches;
+
+    // Instantiate DUT (use the fixed CPU module if you saved it under that name)
+    final_CPU DUT (
+        .switches(switches),
+        .clk(clk),
+        .reset(reset)
+    );
+
+    // Clock: 10 ns period -> toggle every 5 ns
     initial begin
-        $dumpfile("CPU_final.vcd");
-        $dumpvars(0, testbench);
-
-        reset = 1'b0;
-        #5;
-        reset = 1'b1;
-        #10;
-        reset = 1'b0;
-        #99;
-        $finish;
+        clk = 0;
+        forever #5 clk = ~clk;
     end
 
-    initial clk = 1'b1;
-    always #5 clk = ~clk;
+    // Initialize and preload memories
+    initial begin
+        // Initialize inputs
+        switches = 16'h0000;
+        reset = 1;
+        #20;
+        reset = 0;
+
+        // --- Preload DATA MEMORY (DMEM) ---
+        // NOTE: Replace "memory_array" below with the actual internal data memory_array array name if different.
+        // Example: if your data_memory.v declares "reg [7:0] memory_array [0:63];", this is correct.
+        // If it declares "reg [7:0] mem [0:63];" replace "memory_array" with "mem".
+
+        DUT.DMEM.memory_array[0] = 8'd7;   // DMEM[0] = 7
+        DUT.DMEM.memory_array[1] = 8'd3;   // DMEM[1] = 3
+        DUT.DMEM.memory_array[2] = 8'd2;   // DMEM[2] = 2
+        DUT.DMEM.memory_array[3] = 8'd1;   // DMEM[3] = 1
+        DUT.DMEM.memory_array[4] = 8'd6;   // DMEM[4] = 6
+        DUT.DMEM.memory_array[5] = 8'd4;   // DMEM[5] = 4
+        DUT.DMEM.memory_array[6] = 8'd5;   // DMEM[6] = 5
+        DUT.DMEM.memory_array[7] = 8'd8;   // DMEM[7] = 8
+        DUT.DMEM.memory_array[8] = 8'd7;   // DMEM[8] = 7 (your earlier code had an extra 7 at addr 8)
+
+        // --- Preload CODE MEMORY (CMEM) instructions ---
+        // Addresses given were binary 100000..110011 -> decimal 32..51
+        // Replace "memory_array" with the actual internal array name in code_memory.v if different.
+
+        DUT.CMEM.memory_array[32] = 16'b0011000000000000;
+        DUT.CMEM.memory_array[33] = 16'b1000110000001000;
+        DUT.CMEM.memory_array[34] = 16'b0011010000000000;
+        DUT.CMEM.memory_array[35] = 16'b1101001100000000;
+        DUT.CMEM.memory_array[36] = 16'b1111001100001110;
+        DUT.CMEM.memory_array[37] = 16'b1000110000001000;
+        DUT.CMEM.memory_array[38] = 16'b0110110000000000;
+        DUT.CMEM.memory_array[39] = 16'b1101011100000000;
+        DUT.CMEM.memory_array[40] = 16'b1111001100001000;
+        DUT.CMEM.memory_array[41] = 16'b1001100100000000;
+        DUT.CMEM.memory_array[42] = 16'b1001110100000001;
+        DUT.CMEM.memory_array[43] = 16'b1101111000000000;
+        DUT.CMEM.memory_array[44] = 16'b1111001100000010;
+        DUT.CMEM.memory_array[45] = 16'b1011110100000000;
+        DUT.CMEM.memory_array[46] = 16'b1011100100000001;
+        DUT.CMEM.memory_array[47] = 16'b0101010000000001;
+        DUT.CMEM.memory_array[48] = 16'b1110000011110100;
+        DUT.CMEM.memory_array[49] = 16'b0101000000000001;
+        DUT.CMEM.memory_array[50] = 16'b1110000011101110;
+        DUT.CMEM.memory_array[51] = 16'b0000000000000000;
+
+        // Let the DUT settle a little before execution (optional)
+        #10;
+    end
+
+    // Dump waveform and run simulation
+    initial begin
+        $dumpfile("final_CPU_tb.vcd");
+        $dumpvars(0, final_CPU_tb);
+
+        // Give time for program to run - adjust cycles depending on program complexity
+        // Here we wait for 2000 clock cycles (2000 * 10ns = 20 us)
+        repeat (20000) @(posedge clk);
+
+        // Print Data Memory contents (explicit indices)
+        $display("\n==== DMEM contents after execution ====");
+        $display("Addr | Data (decimal) | Data (binary)");
+        $display("-------------------------------------");
+        $display("  0  | %0d | %b", DUT.DMEM.memory_array[0], DUT.DMEM.memory_array[0]);
+        $display("  1  | %0d | %b", DUT.DMEM.memory_array[1], DUT.DMEM.memory_array[1]);
+        $display("  2  | %0d | %b", DUT.DMEM.memory_array[2], DUT.DMEM.memory_array[2]);
+        $display("  3  | %0d | %b", DUT.DMEM.memory_array[3], DUT.DMEM.memory_array[3]);
+        $display("  4  | %0d | %b", DUT.DMEM.memory_array[4], DUT.DMEM.memory_array[4]);
+        $display("  5  | %0d | %b", DUT.DMEM.memory_array[5], DUT.DMEM.memory_array[5]);
+        $display("  6  | %0d | %b", DUT.DMEM.memory_array[6], DUT.DMEM.memory_array[6]);
+        $display("  7  | %0d | %b", DUT.DMEM.memory_array[7], DUT.DMEM.memory_array[7]);
+        $display("  8  | %0d | %b", DUT.DMEM.memory_array[8], DUT.DMEM.memory_array[8]);
+
+        // Save DMEM to file (optional) - replace 'memory_array' with your internal name if needed
+        $writememh("final_dmem_dump.hex", DUT.DMEM.memory_array);
+
+        $display("\nSimulation done. DMEM dumped to final_dmem_dump.hex");
+        $finish;
+    end
 
 endmodule
