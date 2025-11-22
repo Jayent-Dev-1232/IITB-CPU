@@ -1,0 +1,710 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "E:\iverilog\lib\ivl\system.vpi";
+:vpi_module "E:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "E:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "E:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "E:\iverilog\lib\ivl\va_math.vpi";
+S_000002a6c6502b70 .scope module, "tb_data_memory" "tb_data_memory" 2 27;
+ .timescale -9 -12;
+v000002a6c6505fc0_0 .var "data_in", 7 0;
+v000002a6c6508e60_0 .net "data_out", 7 0, L_000002a6c65d83f0;  1 drivers
+v000002a6c6508f00_0 .var/i "errors", 31 0;
+v000002a6c655cd90_0 .var/i "i", 31 0;
+v000002a6c655d830_0 .var "read_select", 3 0;
+v000002a6c655ce30_0 .var "select", 0 0;
+v000002a6c655d1f0_0 .var "write_select", 3 0;
+S_000002a6c64cc830 .scope module, "uut" "data_memory" 2 39, 2 1 0, S_000002a6c6502b70;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "data_in";
+    .port_info 1 /INPUT 4 "write_select";
+    .port_info 2 /INPUT 4 "read_select";
+    .port_info 3 /INPUT 1 "select";
+    .port_info 4 /OUTPUT 8 "data_out";
+L_000002a6c65d83f0 .functor BUFZ 8, L_000002a6c655ced0, C4<00000000>, C4<00000000>, C4<00000000>;
+v000002a6c64d0bb0_0 .net *"_ivl_0", 7 0, L_000002a6c655ced0;  1 drivers
+v000002a6c64a3bf0_0 .net *"_ivl_2", 5 0, L_000002a6c655d6f0;  1 drivers
+L_000002a6c6590088 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
+v000002a6c648e6e0_0 .net *"_ivl_5", 1 0, L_000002a6c6590088;  1 drivers
+v000002a6c65035f0_0 .net "data_in", 7 0, v000002a6c6505fc0_0;  1 drivers
+v000002a6c64d4350_0 .net "data_out", 7 0, L_000002a6c65d83f0;  alias, 1 drivers
+v000002a6c648bf00_0 .var/i "i", 31 0;
+v000002a6c64d4800 .array "memory_array", 15 0, 7 0;
+v000002a6c64cfe60_0 .net "read_select", 3 0, v000002a6c655d830_0;  1 drivers
+v000002a6c64cff00_0 .net "select", 0 0, v000002a6c655ce30_0;  1 drivers
+v000002a6c6505f20_0 .net "write_select", 3 0, v000002a6c655d1f0_0;  1 drivers
+E_000002a6c64fa6b0 .event anyedge, v000002a6c64cff00_0, v000002a6c65035f0_0, v000002a6c6505f20_0;
+L_000002a6c655ced0 .array/port v000002a6c64d4800, L_000002a6c655d6f0;
+L_000002a6c655d6f0 .concat [ 4 2 0 0], v000002a6c655d830_0, L_000002a6c6590088;
+    .scope S_000002a6c64cc830;
+T_0 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000002a6c648bf00_0, 0, 32;
+T_0.0 ;
+    %load/vec4 v000002a6c648bf00_0;
+    %cmpi/s 15, 0, 32;
+    %jmp/0xz T_0.1, 5;
+    %pushi/vec4 0, 0, 8;
+    %ix/getv/s 4, v000002a6c648bf00_0;
+    %store/vec4a v000002a6c64d4800, 4, 0;
+    %load/vec4 v000002a6c648bf00_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000002a6c648bf00_0, 0, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+    .scope S_000002a6c64cc830;
+T_1 ;
+    %wait E_000002a6c64fa6b0;
+    %load/vec4 v000002a6c64cff00_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_1.0, 8;
+    %load/vec4 v000002a6c65035f0_0;
+    %load/vec4 v000002a6c6505f20_0;
+    %pad/u 6;
+    %ix/vec4 4;
+    %store/vec4a v000002a6c64d4800, 4, 0;
+T_1.0 ;
+    %jmp T_1;
+    .thread T_1, $push;
+    .scope S_000002a6c6502b70;
+T_2 ;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000002a6c6508f00_0, 0, 32;
+    %vpi_call 2 60 "$dumpfile", "data_memory_tb.vcd" {0 0 0};
+    %vpi_call 2 61 "$dumpvars", 32'sb00000000000000000000000000000000, S_000002a6c6502b70 {0 0 0};
+    %vpi_call 2 63 "$display", "===== Data Memory Test =====\012" {0 0 0};
+    %vpi_call 2 66 "$display", "Test 1: Initial Memory State" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000002a6c655cd90_0, 0, 32;
+T_2.0 ;
+    %load/vec4 v000002a6c655cd90_0;
+    %cmpi/s 16, 0, 32;
+    %jmp/0xz T_2.1, 5;
+    %load/vec4 v000002a6c655cd90_0;
+    %pad/s 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/ne 0, 0, 8;
+    %jmp/0xz  T_2.2, 6;
+    %vpi_call 2 72 "$display", "ERROR: Memory[%0d] = %h, expected 00", v000002a6c655cd90_0, v000002a6c6508e60_0 {0 0 0};
+    %load/vec4 v000002a6c6508f00_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000002a6c6508f00_0, 0, 32;
+T_2.2 ;
+    %load/vec4 v000002a6c655cd90_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000002a6c655cd90_0, 0, 32;
+    %jmp T_2.0;
+T_2.1 ;
+    %load/vec4 v000002a6c6508f00_0;
+    %cmpi/e 0, 0, 32;
+    %jmp/0xz  T_2.4, 4;
+    %vpi_call 2 77 "$display", "PASS: All memory locations initialized to 0\012" {0 0 0};
+    %jmp T_2.5;
+T_2.4 ;
+    %vpi_call 2 79 "$display", "FAIL: %0d memory locations not initialized correctly\012", v000002a6c6508f00_0 {0 0 0};
+T_2.5 ;
+    %vpi_call 2 82 "$display", "Test 2: Write and Read Operations" {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 170, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 170, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.6, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.7, 8;
+T_2.6 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.7, 8;
+ ; End of false expr.
+    %blend;
+T_2.7;
+    %vpi_call 2 92 "$display", "Write %h to addr %0d, Read back: %h %s", 8'b10101010, 4'b0000, v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 7, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 85, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 7, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 85, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.8, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.9, 8;
+T_2.8 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.9, 8;
+ ; End of false expr.
+    %blend;
+T_2.9;
+    %vpi_call 2 103 "$display", "Write %h to addr %0d, Read back: %h %s", 8'b01010101, 4'b0111, v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 255, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 255, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.10, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.11, 8;
+T_2.10 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.11, 8;
+ ; End of false expr.
+    %blend;
+T_2.11;
+    %vpi_call 2 114 "$display", "Write %h to addr %0d, Read back: %h %s", 8'b11111111, 4'b1111, v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %vpi_call 2 118 "$display", "\012Test 3: Sequential Write to All Locations" {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000002a6c655cd90_0, 0, 32;
+T_2.12 ;
+    %load/vec4 v000002a6c655cd90_0;
+    %cmpi/s 16, 0, 32;
+    %jmp/0xz T_2.13, 5;
+    %load/vec4 v000002a6c655cd90_0;
+    %pad/s 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 16, 0, 32;
+    %load/vec4 v000002a6c655cd90_0;
+    %add;
+    %pad/u 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c655cd90_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000002a6c655cd90_0, 0, 32;
+    %jmp T_2.12;
+T_2.13 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000002a6c6508f00_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000002a6c655cd90_0, 0, 32;
+T_2.14 ;
+    %load/vec4 v000002a6c655cd90_0;
+    %cmpi/s 16, 0, 32;
+    %jmp/0xz T_2.15, 5;
+    %load/vec4 v000002a6c655cd90_0;
+    %pad/s 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %pad/u 32;
+    %pushi/vec4 16, 0, 32;
+    %load/vec4 v000002a6c655cd90_0;
+    %add;
+    %cmp/ne;
+    %jmp/0xz  T_2.16, 6;
+    %pushi/vec4 16, 0, 32;
+    %load/vec4 v000002a6c655cd90_0;
+    %add;
+    %vpi_call 2 133 "$display", "ERROR: Memory[%0d] = %h, expected %h", v000002a6c655cd90_0, v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %load/vec4 v000002a6c6508f00_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000002a6c6508f00_0, 0, 32;
+T_2.16 ;
+    %load/vec4 v000002a6c655cd90_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000002a6c655cd90_0, 0, 32;
+    %jmp T_2.14;
+T_2.15 ;
+    %load/vec4 v000002a6c6508f00_0;
+    %cmpi/e 0, 0, 32;
+    %jmp/0xz  T_2.18, 4;
+    %vpi_call 2 138 "$display", "PASS: All 16 locations written and verified correctly" {0 0 0};
+    %jmp T_2.19;
+T_2.18 ;
+    %vpi_call 2 140 "$display", "FAIL: %0d locations have incorrect data", v000002a6c6508f00_0 {0 0 0};
+T_2.19 ;
+    %vpi_call 2 143 "$display", "\012Test 4: Overwrite Test" {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 222, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %vpi_call 2 151 "$display", "First write to addr 5: %h", v000002a6c6508e60_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 190, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 190, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.20, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.21, 8;
+T_2.20 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.21, 8;
+ ; End of false expr.
+    %blend;
+T_2.21;
+    %vpi_call 2 160 "$display", "Overwrite addr 5: %h %s", v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %vpi_call 2 164 "$display", "\012Test 5: Write Disable Test" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 10, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %vpi_call 2 168 "$display", "Current value at addr 10: %h", v000002a6c6508e60_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 10, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 204, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 10, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/ne 204, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.22, 8;
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 0, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 20545, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1397956648, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1852776567, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1919513701, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 41, 0, 8; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_2.23, 8;
+T_2.22 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %pushi/vec4 539522930, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1869899040, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1684370288, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1769235744, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1936026725, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1668562224, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 41, 0, 8; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_2.23, 8;
+ ; End of false expr.
+    %blend;
+T_2.23;
+    %vpi_call 2 176 "$display", "After write attempt with select=0: %h %s", v000002a6c6508e60_0, S<0,vec4,u232> {1 0 0};
+    %vpi_call 2 180 "$display", "\012Test 6: Random Access Pattern" {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 17, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 8, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 34, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 13, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 51, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 6, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 68, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 17, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.24, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.25, 8;
+T_2.24 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.25, 8;
+ ; End of false expr.
+    %blend;
+T_2.25;
+    %vpi_call 2 188 "$display", "Read addr 2:  %h (expected 11) %s", v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %pushi/vec4 8, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 34, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.26, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.27, 8;
+T_2.26 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.27, 8;
+ ; End of false expr.
+    %blend;
+T_2.27;
+    %vpi_call 2 189 "$display", "Read addr 8:  %h (expected 22) %s", v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %pushi/vec4 13, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 51, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.28, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.29, 8;
+T_2.28 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.29, 8;
+ ; End of false expr.
+    %blend;
+T_2.29;
+    %vpi_call 2 190 "$display", "Read addr 13: %h (expected 33) %s", v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %pushi/vec4 6, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 68, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.30, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.31, 8;
+T_2.30 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.31, 8;
+ ; End of false expr.
+    %blend;
+T_2.31;
+    %vpi_call 2 191 "$display", "Read addr 6:  %h (expected 44) %s", v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %vpi_call 2 194 "$display", "\012Test 7: Boundary Address Test" {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 160, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 176, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 160, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.32, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.33, 8;
+T_2.32 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.33, 8;
+ ; End of false expr.
+    %blend;
+T_2.33;
+    %vpi_call 2 200 "$display", "Read addr 0 (min):  %h %s", v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 176, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.34, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.35, 8;
+T_2.34 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.35, 8;
+ ; End of false expr.
+    %blend;
+T_2.35;
+    %vpi_call 2 201 "$display", "Read addr 15 (max): %h %s", v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %vpi_call 2 204 "$display", "\012Test 8: Various Data Patterns" {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 255, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 170, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 85, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 4, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 240, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 15, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 0, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.36, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.37, 8;
+T_2.36 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.37, 8;
+ ; End of false expr.
+    %blend;
+T_2.37;
+    %vpi_call 2 215 "$display", "Pattern 00000000: %b %s", v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 255, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.38, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.39, 8;
+T_2.38 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.39, 8;
+ ; End of false expr.
+    %blend;
+T_2.39;
+    %vpi_call 2 216 "$display", "Pattern 11111111: %b %s", v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 170, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.40, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.41, 8;
+T_2.40 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.41, 8;
+ ; End of false expr.
+    %blend;
+T_2.41;
+    %vpi_call 2 217 "$display", "Pattern 10101010: %b %s", v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 85, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.42, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.43, 8;
+T_2.42 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.43, 8;
+ ; End of false expr.
+    %blend;
+T_2.43;
+    %vpi_call 2 218 "$display", "Pattern 01010101: %b %s", v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %pushi/vec4 4, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 240, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.44, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.45, 8;
+T_2.44 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.45, 8;
+ ; End of false expr.
+    %blend;
+T_2.45;
+    %vpi_call 2 219 "$display", "Pattern 11110000: %b %s", v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 15, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.46, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.47, 8;
+T_2.46 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.47, 8;
+ ; End of false expr.
+    %blend;
+T_2.47;
+    %vpi_call 2 220 "$display", "Pattern 00001111: %b %s", v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %vpi_call 2 223 "$display", "\012Test 9: Simultaneous Read/Write Different Addresses" {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %pushi/vec4 9, 0, 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 153, 0, 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %pushi/vec4 12, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %vpi_call 2 229 "$display", "Reading addr 12 while writing to addr 9: %h", v000002a6c6508e60_0 {0 0 0};
+    %pushi/vec4 9, 0, 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 10000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %cmpi/e 153, 0, 8;
+    %flag_mov 8, 6;
+    %jmp/0 T_2.48, 8;
+    %pushi/vec4 1346458451, 0, 32; draw_string_vec4
+    %jmp/1 T_2.49, 8;
+T_2.48 ; End of true expr.
+    %pushi/vec4 1178683724, 0, 32; draw_string_vec4
+    %jmp/0 T_2.49, 8;
+ ; End of false expr.
+    %blend;
+T_2.49;
+    %vpi_call 2 232 "$display", "Verify write to addr 9: %h %s", v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+    %vpi_call 2 235 "$display", "\012Test 10: Rapid Write-Read Cycles" {0 0 0};
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000002a6c655cd90_0, 0, 32;
+T_2.50 ;
+    %load/vec4 v000002a6c655cd90_0;
+    %cmpi/s 16, 0, 32;
+    %jmp/0xz T_2.51, 5;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %load/vec4 v000002a6c655cd90_0;
+    %pad/s 4;
+    %store/vec4 v000002a6c655d1f0_0, 0, 4;
+    %pushi/vec4 240, 0, 32;
+    %load/vec4 v000002a6c655cd90_0;
+    %or;
+    %pad/u 8;
+    %store/vec4 v000002a6c6505fc0_0, 0, 8;
+    %delay 5000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002a6c655ce30_0, 0, 1;
+    %load/vec4 v000002a6c655cd90_0;
+    %pad/s 4;
+    %store/vec4 v000002a6c655d830_0, 0, 4;
+    %delay 5000, 0;
+    %load/vec4 v000002a6c6508e60_0;
+    %pad/u 32;
+    %pushi/vec4 240, 0, 32;
+    %load/vec4 v000002a6c655cd90_0;
+    %or;
+    %cmp/ne;
+    %jmp/0xz  T_2.52, 6;
+    %pushi/vec4 240, 0, 32;
+    %load/vec4 v000002a6c655cd90_0;
+    %or;
+    %vpi_call 2 245 "$display", "FAIL: Rapid cycle addr %0d = %h, expected %h", v000002a6c655cd90_0, v000002a6c6508e60_0, S<0,vec4,u32> {1 0 0};
+T_2.52 ;
+    %load/vec4 v000002a6c655cd90_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000002a6c655cd90_0, 0, 32;
+    %jmp T_2.50;
+T_2.51 ;
+    %vpi_call 2 248 "$display", "Rapid write-read cycles complete" {0 0 0};
+    %vpi_call 2 250 "$display", "\012===== Test Complete =====" {0 0 0};
+    %delay 20000, 0;
+    %vpi_call 2 252 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+    .scope S_000002a6c6502b70;
+T_3 ;
+    %vpi_call 2 257 "$monitor", "Time=%0t | select=%b | write_sel=%0d | read_sel=%0d | data_in=%h | data_out=%h", $time, v000002a6c655ce30_0, v000002a6c655d1f0_0, v000002a6c655d830_0, v000002a6c6505fc0_0, v000002a6c6508e60_0 {0 0 0};
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "data_memory.v";
