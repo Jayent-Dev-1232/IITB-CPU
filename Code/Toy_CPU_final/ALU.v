@@ -1,3 +1,97 @@
+module full_adder (
+    input  wire a,
+    input  wire b,
+    input  wire cin,
+    output wire sum,
+    output wire cout
+);
+    assign sum  = a ^ b ^ cin;
+    assign cout = (a & b) | (a & cin) | (b & cin);
+endmodule
+
+module flag_calculator (
+    input wire [7:0] I,
+    output wire zero,
+    output wire negative
+);
+    assign zero = ~(I[0] | I[1] | I[2] | I[3] | I[4] | I[5] | I[6] | I[7]);
+    assign negative = I[7];
+endmodule
+
+module two_in_mux (
+    input wire a,
+    input wire b,
+    input wire sel,
+    output wire y
+);
+    assign y = (sel == 1'b0) ? b : a;
+endmodule
+
+module eight_in_mux (
+    input wire [7:0] a,
+    input wire [7:0] b,
+    input wire sel,
+    output wire [7:0] y
+);
+    genvar i;
+    generate
+        for (i = 0; i < 8; i = i + 1) begin : mux_loop
+            two_in_mux mux_inst (
+                .a(a[i]),
+                .b(b[i]),
+                .sel(sel),
+                .y(y[i])
+            );
+        end
+    endgenerate
+    
+endmodule
+
+module bit_shifter (
+    input wire select,
+    input wire [7:0] I,
+    output wire [7:0] O,
+    output wire shift_out
+);
+    two_in_mux m0 (.a(I[0]), .b(I[7]), .sel(select), .y(shift_out));
+    two_in_mux m1 (.a(I[1]), .b(1'b0), .sel(select), .y(O[0]));
+    two_in_mux m2 (.a(I[2]), .b(I[0]), .sel(select), .y(O[1]));
+    two_in_mux m3 (.a(I[3]), .b(I[1]), .sel(select), .y(O[2]));
+    two_in_mux m4 (.a(I[4]), .b(I[2]), .sel(select), .y(O[3]));
+    two_in_mux m5 (.a(I[5]), .b(I[3]), .sel(select), .y(O[4]));
+    two_in_mux m6 (.a(I[6]), .b(I[4]), .sel(select), .y(O[5]));
+    two_in_mux m7 (.a(I[7]), .b(I[5]), .sel(select), .y(O[6]));
+    two_in_mux m8 (.a(1'b0), .b(I[6]), .sel(select), .y(O[7]));
+endmodule
+
+module bit_adder (
+    input  wire [7:0] X,
+    input  wire [7:0] Y,
+    input  wire add_sub,
+    output wire [7:0] S,
+    output wire overflow,
+    output wire carry
+);
+
+    wire [7:0] Yxor;
+    wire [8:0] C;
+    assign C[0] = add_sub;
+    assign Yxor = Y ^ {8{add_sub}};
+
+    full_adder fa0 (.a(X[0]), .b(Yxor[0]), .cin(C[0]), .sum(S[0]), .cout(C[1]));
+    full_adder fa1 (.a(X[1]), .b(Yxor[1]), .cin(C[1]), .sum(S[1]), .cout(C[2]));
+    full_adder fa2 (.a(X[2]), .b(Yxor[2]), .cin(C[2]), .sum(S[2]), .cout(C[3]));
+    full_adder fa3 (.a(X[3]), .b(Yxor[3]), .cin(C[3]), .sum(S[3]), .cout(C[4]));
+    full_adder fa4 (.a(X[4]), .b(Yxor[4]), .cin(C[4]), .sum(S[4]), .cout(C[5]));
+    full_adder fa5 (.a(X[5]), .b(Yxor[5]), .cin(C[5]), .sum(S[5]), .cout(C[6]));
+    full_adder fa6 (.a(X[6]), .b(Yxor[6]), .cin(C[6]), .sum(S[6]), .cout(C[7]));
+    full_adder fa7 (.a(X[7]), .b(Yxor[7]), .cin(C[7]), .sum(S[7]), .cout(C[8]));
+
+    assign carry = C[8];
+    assign overflow = C[7] ^ C[8];
+
+endmodule
+
 module ALU (
     input wire [1:0]ALU_select,
     input wire [7:0]A,

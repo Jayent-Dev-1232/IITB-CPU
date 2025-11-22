@@ -1,7 +1,10 @@
 // Auto-generated Verilog Control Decoder
 module control_unit(
     input  [26:0] opcode_in,
-    input  [3:0] break_flag,
+    input  carry_flag,
+	 input overflow_flag,
+	 input negative_flag,
+	 input zero_flag,
     output [17:0] control
 );
 
@@ -38,7 +41,7 @@ module control_unit(
 
     // Control signal equations
     assign control[0]  = opcode[INPUTC] | opcode[INPUTCF]; // IMEM_WRITE_ENABLE
-    assign control[1]  = opcode[JUMP] | (opcode[BRE_BRZ] & break_flag[0]) | (opcode[BRNE_BRNZ] & break_flag[1]) | (opcode[BRG] & break_flag[2]) | (opcode[BRGE] & break_flag[3]); // PROGRAM_COUNTER_MUX
+    assign control[1]  = opcode[JUMP] | (opcode[BRE_BRZ] & zero_flag) | (opcode[BRNE_BRNZ] & (~zero_flag)) | (opcode[BRG] & (~(zero_flag | negative_flag | overflow_flag))) | (opcode[BRGE] & (~(negative_flag | overflow_flag))); // PROGRAM_COUNTER_MUX
     assign control[2]  = 1'b1; // PROGRAM_WRITE_ENABLE
 	 assign control[3] = ((opcode[INPUTCF] | opcode[INPUTDF] | opcode[ADD] | opcode[ADDI] | opcode[SUB] | opcode[SUBI] | opcode[SHIFTL] | opcode[SHIFTR] | opcode[CMP]) & X1) | ((opcode[MOVE] | opcode[LOADF] | opcode[STOREF]) & Y1); // REGISTERS_PORT0_SELECT1
 

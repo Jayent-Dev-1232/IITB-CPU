@@ -1,276 +1,148 @@
 `timescale 1ns / 1ps
 
 module final_CPU (
-    input wire clk,
-    input wire reset,
-    input wire [15:0] program_input,
     input wire [15:0] switches,
-    output wire [7:0] debug_port_a,
-    output wire [7:0] debug_alu_out
+    input wire clk,
+    input wire reset
 );
-
-    wire [5:0] pc_current;
-    wire [5:0] pc_next;
-    wire [5:0] pc_plus_one;
-    wire [5:0] pc_branch_target;
-    
-    wire [15:0] instruction;
-    wire [7:0] opcode_bus_high = instruction[15:8];
-    wire [7:0] operand_bus_low = instruction[7:0];
-    
-    wire [26:0] decoded_opcode;
+    wire [7:0] DMEM_data_in;
+    wire [7:0] register_B_data_out;
+    wire [7:0] register_A_data_out;
     wire [17:0] c;
+    wire [7:0] ALU_result_mux;
+    wire [7:0] DMEM_data_out;
+    wire [7:0] REG_writeback_mux;
+    wire [15:0] CMEM_out;
+    wire [7:0] ALU_result;
+    wire carry_in;
+    wire overflow_in;
+    wire zero_in;
+    wire negative_in;
+    wire [7:0] ALU_source_B_mux;
+    wire carry_flag;
+    wire overflow_flag;
+    wire zero_flag;
+    wire negative_flag;
+    wire [5:0] program_counter_out;
+    wire [26:0] decoder_output;
+    wire [1:0] write_select;
+    wire [1:0] port_A_select;
+    wire [1:0] port_B_select;
+    wire [1:0] alu_select_input;
 
-    wire [7:0] reg_port_a_out;
-    wire [7:0] reg_port_b_out;
-    wire [7:0] writeback_data;
+    assign DMEM_data_in = c[15] ? switches[7:0] : register_B_data_out;
 
-    wire [7:0] alu_source_mux_out;
-    wire [7:0] alu_result;
-    wire [7:0] alu_result_mux_out;
-    wire flag_carry, flag_overflow, flag_negative, flag_zero;
-    wire carry_out, overflow_out, negative_out, zero_out;
-    wire [3:0] flag_bus = {flag_zero, flag_negative, flag_overflow, flag_carry};
-    
-    wire [7:0] dmem_mux_out;
-    wire [7:0] dmem_data_out;
-
-    wire rst_n = ~reset;
-
-    pc_update_logic PC_LOGIC (
-        .A0(pc_current),
-        .A1(operand_bus_low[5:0]),
-        .Y0(pc_plus_one),
-        .Y1(pc_branch_target)
+    data_memory DMEM (
+        .data_in(DMEM_data_in),
+        .write_select(ALU_result_mux[3:0]),
+        .read_select(ALU_result_mux[3:0]),
+        .select(c[16]),
+        .data_out(DMEM_data_out)
     );
 
-    assign pc_next = (c[1]) ? pc_branch_target : pc_plus_one;
+    assign REG_writeback_mux = c[17] ? DMEM_data_out : ALU_result_mux;
 
-    program_counter PC (
-        .A(pc_next),
-        .c3(c[2]),
-        .Y(pc_current)
-    );
+    assign write_select[1] = c[7];
+    assign write_select[0] = c[8];
+    assign port_A_select[1] = c[3];
+    assign port_A_select[0] = c[4];
+    assign port_B_select[1] = c[5];
+    assign port_B_select[0] = c[6];
 
-    code_memory IMEM (
-        .data_in(program_input),
-        .write_select(program_input[5:0]),
-        .read_select(pc_current),
-        .select(c[0]),
-        .data_out(instruction)
-    );
-
-    opcode_decoder DECODER (
-        .A(opcode_bus_high),
-        .Y(decoded_opcode)
-    );
-
-    control_unit CONTROL (
-        .opcode_in(decoded_opcode),
-        .break_flag(flag_bus),
-        .control(c)
-    );
-
-    register_file REG_FILE (
+    register_file REG (
         .clk(clk),
         .reset(reset),
         .write_en(c[9]),
-        .write_sel({c[7], c[8]}),
-        .port_a_sel({c[3], c[4]}),
-        .port_b_sel({c[5], c[6]}),
-        .input_data(writeback_data),
-        .port_a_data(reg_port_a_out),
-        .port_b_data(reg_port_b_out)
-    );
-    
-    eight_in_mux ALU_SRC_MUX (
-        .a(operand_bus_low),
-        .b(reg_port_b_out),
-        .sel(c[10]),
-        .y(alu_source_mux_out)
+        .write_sel(write_select),
+        .port_a_sel(port_A_select),
+        .port_b_sel(port_B_select),
+        .input_data(REG_writeback_mux),
+        .port_a_data(register_A_data_out),
+        .port_b_data(register_B_data_out)
     );
 
-    ALU CPU_ALU (
-        .ALU_select({c[11], c[12]}),
-        .A(reg_port_a_out),
-        .B(alu_source_mux_out),
-        .ALU_result(alu_result),
-        .carry(carry_out),
-        .overflow(overflow_out),
-        .zero(zero_out),
-        .negative(negative_out)
+    assign ALU_source_B_mux = c[10] ? CMEM_out[7:0] : register_B_data_out;
+
+    assign alu_select_input[1] = c[11];
+    assign alu_select_input[0] = c[12];
+    ALU ALU_unit (
+        .ALU_select(alu_select_input),
+        .A(register_A_data_out),
+        .B(ALU_source_B_mux),
+        .ALU_result(ALU_result),
+        .carry(carry_in),
+        .overflow(overflow_in),
+        .zero(zero_in),
+        .negative(negative_in)
     );
 
-    flag_register FLAGS (
+    assign ALU_result_mux = c[14] ? CMEM_out[7:0] : ALU_result;
+
+    flag_registers flag_unit (
         .clk(clk),
-        .rst_n(rst_n),
+        .rst_n(reset),
         .write_enable(c[13]),
-        .carry_in(carry_out),
-        .overflow_in(overflow_out),
-        .negative_in(negative_out),
-        .zero_in(zero_out),
-        .carry_flag(flag_carry),
-        .overflow_flag(flag_overflow),
-        .negative_flag(flag_negative),
-        .zero_flag(flag_zero)
+        .carry_in(carry_in),
+        .overflow_in(overflow_in),
+        .negative_in(negative_in),
+        .zero_in(zero_in),
+        .carry_flag(carry_flag),
+        .overflow_flag(overflow_flag),
+        .negative_flag(negative_flag),
+        .zero_flag(zero_flag)
     );
 
-    eight_in_mux DMEM_IN_MUX (
-        .a(switches[7:0]),
-        .b(reg_port_b_out),
-        .sel(c[15]),
-        .y(dmem_mux_out)
+    code_memory CMEM (
+        .data_in(switches),
+        .write_select(ALU_result_mux[5:0]),
+        .read_select(program_counter_out),
+        .select(c[0]),
+        .data_out(CMEM_out)
     );
 
-    data_memory DMEM (
-        .data_in(dmem_mux_out),
-        .write_select(operand_bus_low[3:0]),
-        .read_select(operand_bus_low[3:0]),
-        .select(c[16]),
-        .data_out(dmem_data_out)
+    opcode_decoder opcodes (
+        .A(CMEM_out[15:8]),
+        .Y(decoder_output)
     );
 
-    eight_in_mux ALU_RES_MUX (
-        .a(dmem_data_out),
-        .b(alu_result),
-        .sel(c[14]),
-        .y(alu_result_mux_out)
+    control_unit controls (
+        .opcode_in(decoder_output),
+        .carry_flag(carry_flag),
+        .overflow_flag(overflow_flag),
+        .negative_flag(negative_flag),
+        .zero_flag(zero_flag),
+        .control(c)
     );
 
-    eight_in_mux WB_MUX (
-        .a(operand_bus_low),
-        .b(alu_result_mux_out),
-        .sel(c[17]),
-        .y(writeback_data)
+    program_counter pc_logic (
+        .A0(CMEM_out[5:0]),
+        .A1(program_counter_out),
+        .clk(clk),
+        .c2(c[1]),
+        .c3(c[2]),
+        .Y(program_counter_out)
     );
-
-    assign debug_port_a = reg_port_a_out;
-    assign debug_alu_out = alu_result;
-
 endmodule
 
+module testbench;
+    reg reset,clk;
+    wire [7:0] bluff;
+    final_CPU dut(16'b0000000000000000, clk, reset);
 
-
-module tb_integrated_cpu;
-
-    // ============================================================
-    // 1. Signals and Constants
-    // ============================================================
-    reg clk;
-    reg reset;
-    reg [15:0] program_input;
-    reg [15:0] switches;
-    
-    wire [7:0] debug_port_a;
-    wire [7:0] debug_alu_out;
-
-    // Clock Period (10ns = 100MHz)
-    localparam CLK_PERIOD = 10;
-
-    // ============================================================
-    // 2. Instantiate the Integrated CPU
-    // ============================================================
-    final_CPU uut (
-        .clk(clk),
-        .reset(reset),
-        .program_input(program_input),
-        .switches(switches),
-        .debug_port_a(debug_port_a),   // Connects to Register Port A output
-        .debug_alu_out(debug_alu_out)  // Connects to ALU Result
-    );
-    // ============================================================
-    // GTKWave Dump Setup
-    // ============================================================
     initial begin
-        // Specify the name of the dump file
-        $dumpfile("cpu_wave.vcd");
-        
-        // Dump all variables (level 0) starting from the testbench instance
-        $dumpvars(0, tb_integrated_cpu); 
-    end
+        $dumpfile("CPU_final.vcd");
+        $dumpvars(0, testbench);
 
-    // ============================================================
-    // 3. Clock Generation
-    // ============================================================
-    initial begin
-        clk = 0;
-        forever #(CLK_PERIOD/2) clk = ~clk;
-    end
-
-    // ============================================================
-    // 4. Test Procedure
-    // ============================================================
-    initial begin
-        // --- Initialize Inputs ---
-        reset = 1;          // Active High Reset (based on your cpu design)
-        program_input = 0;
-        switches = 0;
-
-        // --- Load Test Program into Instruction Memory ---
-        // Note: This writes directly to the memory array inside the instance.
-        // Based on opcode_decoder analysis:
-        // Opcode '5' (High Nibble 0x5) -> Y[8] -> ADDI
-        // Since opcode_decoder might default X0/X1 to 0, this targets Register 0.
-        
-        $display("Loading Instruction Memory...");
-        
-        // Instruction 0: ADDI 5 (Reg0 = Reg0 + 5)
-        // Opcode: 0x5 (ADDI), Operand: 0x05
-        uut.IMEM.memory_array[0] = 16'h5005; 
-
-        // Instruction 1: ADDI 10 (Reg0 = Reg0 + 10)
-        // Opcode: 0x5 (ADDI), Operand: 0x0A
-        uut.IMEM.memory_array[1] = 16'h500A;
-
-        // Instruction 2: SUBI 2 (Reg0 = Reg0 - 2)
-        // Opcode '7' (0x7) -> Y[10] -> SUBI (Based on decoder map: Y[10] = B[7])
-        // Opcode: 0x7 (SUBI), Operand: 0x02
-        uut.IMEM.memory_array[2] = 16'h7002;
-
-        // Instruction 3: NOOP (Do nothing / Halt loop)
-        // Opcode: 0x0
-        uut.IMEM.memory_array[3] = 16'h0000;
-
-        // --- Start Simulation ---
-        $display("Starting Simulation...");
-        
-        // Hold Reset
-        #20;
-        reset = 0; // Release Reset
-        $display("Reset Released.");
-
-        // --- Cycle-by-Cycle Check ---
-        
-        // 1. Execute ADDI 5
-        // PC=0. Reg0 starts at 0. Result should be 5.
-        #(CLK_PERIOD); 
-        $display("Time: %0t | PC: %d | Instruction: %h | ALU Out: %d | Reg0 (Port A): %d", 
-                 $time, uut.pc_current, uut.instruction, debug_alu_out, debug_port_a);
-
-        // 2. Execute ADDI 10
-        // PC=1. Reg0 is 5. Result should be 5 + 10 = 15.
-        #(CLK_PERIOD); 
-        $display("Time: %0t | PC: %d | Instruction: %h | ALU Out: %d | Reg0 (Port A): %d", 
-                 $time, uut.pc_current, uut.instruction, debug_alu_out, debug_port_a);
-
-        // 3. Execute SUBI 2
-        // PC=2. Reg0 is 15. Result should be 15 - 2 = 13.
-        #(CLK_PERIOD); 
-        $display("Time: %0t | PC: %d | Instruction: %h | ALU Out: %d | Reg0 (Port A): %d", 
-                 $time, uut.pc_current, uut.instruction, debug_alu_out, debug_port_a);
-
-        // 4. Execute NOOP
-        #(CLK_PERIOD); 
-        $display("Time: %0t | PC: %d | Instruction: %h | Final Reg0 Value: %d", 
-                 $time, uut.pc_current, uut.instruction, debug_port_a);
-
-        // --- Final Check ---
-        if (debug_port_a === 13) 
-            $display("SUCCESS: CPU calculated 0 + 5 + 10 - 2 = 13 correctly.");
-        else
-            $display("FAILURE: Expected 13, got %d", debug_port_a);
-
+        reset = 1'b0;
+        #5;
+        reset = 1'b1;
+        #10;
+        reset = 1'b0;
+        #99;
         $finish;
     end
+
+    initial clk = 1'b1;
+    always #5 clk = ~clk;
 
 endmodule
