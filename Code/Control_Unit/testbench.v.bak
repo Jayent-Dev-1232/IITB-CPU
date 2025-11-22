@@ -1,0 +1,82 @@
+`timescale 1ns / 1ps
+
+module tb_control_decoder;
+
+    // Inputs
+    reg [26:0] opcode_in;
+    reg [3:0]  break_flag;
+
+    // Outputs
+    wire [17:0] control;
+
+    // Instantiate the DUT
+    control_decoder uut (
+        .opcode_in(opcode_in),
+        .break_flag(break_flag),
+        .control(control)
+    );
+
+    // Task to display results neatly
+    task display_state;
+        input [26:0] opcode_in_t;
+        input [3:0]  break_flag_t;
+        input [17:0] control_t;
+        begin
+            $display("Time=%0t | opcode_in=%b | break_flag=%b | control=%b",
+                     $time, opcode_in_t, break_flag_t, control_t);
+        end
+    endtask
+
+    initial begin
+        $dumpfile("control_decoder_tb.vcd");
+        $dumpvars(0, tb_control_decoder);
+
+        // Initialize inputs
+        opcode_in   = 27'b0;
+        break_flag  = 4'b0000;
+        #10;
+
+        // Example 1: LOADI_LOADP active (bit 6)
+        opcode_in = 27'b0000000000000000000000010000000; // one-hot at position 6
+        break_flag = 4'b0000;
+        #10 display_state(opcode_in, break_flag, control);
+
+        // Example 2: ADD active (bit 7)
+        opcode_in = 27'b0000000000000000000000100000000;
+        break_flag = 4'b0000;
+        #10 display_state(opcode_in, break_flag, control);
+
+        // Example 3: STORE active (bit 13)
+        opcode_in = 27'b0000000000000100000000000000000;
+        break_flag = 4'b0000;
+        #10 display_state(opcode_in, break_flag, control);
+
+        // Example 4: Branch opcodes (BRE_BRZ)
+        opcode_in = 27'b0000000001000000000000000000000; // bit 19
+        break_flag = 4'b1000; // B4 active
+        #10 display_state(opcode_in, break_flag, control);
+
+        // Example 5: Multiple break flags
+        opcode_in = 27'b0000000010000000000000000000000; // BRNE_BRNZ
+        break_flag = 4'b0100;
+        #10 display_state(opcode_in, break_flag, control);
+
+        // Example 6: BRG with B2 high
+        opcode_in = 27'b0000000100000000000000000000000; // BRG
+        break_flag = 4'b0010;
+        #10 display_state(opcode_in, break_flag, control);
+
+        // Example 7: BRGE with B1 high
+        opcode_in = 27'b0000001000000000000000000000000; // BRGE
+        break_flag = 4'b0001;
+        #10 display_state(opcode_in, break_flag, control);
+
+        // Example 8: All zeros
+        opcode_in = 27'b0;
+        break_flag = 4'b0000;
+        #10 display_state(opcode_in, break_flag, control);
+
+        $finish;
+    end
+
+endmodule
