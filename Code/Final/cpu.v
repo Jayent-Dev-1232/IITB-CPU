@@ -5,7 +5,7 @@ module cpu (
     input  wire         rst,
     input  wire [15:0]  switches,
 
-    output wire [26:0]  op_o,
+    output wire [26:0]  opcode_output,
     output wire [15:0]  instr_o,
     output wire [5:0]   pc_o,
     output wire         pc_mux_o,
@@ -160,7 +160,7 @@ module cpu (
     assign pc_o        = pc;
     assign pc_mux_o    = pc_mux;
     assign im_write_o  = im_write;
-    assign op_o        = opcode;
+    assign opcode_output        = opcode;
     assign data        = data_led;
     assign flags_out   = flags_r;
     assign alu_res_o   = alu_result;
@@ -174,7 +174,7 @@ module tb_load_and_run;
     reg rst = 1'b1;
     reg [15:0] switches = 16'd0;
 
-    wire [26:0] op_o;
+    wire [26:0] opcode_output;
     wire [15:0] instr_o;
     wire [5:0]  pc_o;
     wire pc_mux_o;
@@ -191,7 +191,9 @@ module tb_load_and_run;
         .clk(clk),
         .rst(rst),
         .switches(switches),
-        .op_o(op_o),
+        .opcode_output
+(opcode_output
+),
         .instr_o(instr_o),
         .pc_o(pc_o),
         .pc_mux_o(pc_mux_o),

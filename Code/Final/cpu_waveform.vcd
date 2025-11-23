@@ -1,5 +1,5 @@
 $date
-	Sun Nov 23 18:40:24 2025
+	Sun Nov 23 18:46:50 2025
 $end
 $version
 	Icarus Verilog
@@ -12,7 +12,7 @@ $var wire 32 ! reges [31:0] $end
 $var wire 6 " pc_o [5:0] $end
 $var wire 1 # pc_mux_o $end
 $var wire 5 $ opi_o [4:0] $end
-$var wire 27 % op_o [26:0] $end
+$var wire 27 % opcode_output [26:0] $end
 $var wire 16 & instr_o [15:0] $end
 $var wire 1 ' im_write_o $end
 $var wire 4 ( flags_out [3:0] $end
@@ -28,7 +28,7 @@ $var wire 128 / data [127:0] $end
 $var wire 4 0 flags_out [3:0] $end
 $var wire 1 ' im_write_o $end
 $var wire 16 1 instr_o [15:0] $end
-$var wire 27 2 op_o [26:0] $end
+$var wire 27 2 opcode_output [26:0] $end
 $var wire 5 3 opi_o [4:0] $end
 $var wire 1 # pc_mux_o $end
 $var wire 6 4 pc_o [5:0] $end
