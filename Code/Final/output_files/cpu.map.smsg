@@ -1,0 +1,1 @@
+Info (10281): Verilog HDL Declaration information at cpu.v(15): object "opi_o" differs only in case from object "opi_O" in the same scope File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 15
