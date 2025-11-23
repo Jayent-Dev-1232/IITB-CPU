@@ -10,7 +10,6 @@ module encoder_31_to_5 (
         found = 1'b0;
         code  = 5'b00000;
 
-        // Priority encoder: MSB (30) has highest priority
         for (i = 30; i >= 0; i = i - 1) begin
             if (!found && in_vec[i] == 1'b1) begin
                 code  = i[4:0];

@@ -6,7 +6,7 @@ module decoder_2_to_4 (
 
     always @(*) begin
         if (en == 1'b1)
-            y = (4'b0001 << w);   // same as VHDL: 1 sll w
+            y = (4'b0001 << w);
         else
             y = 4'b0000;
     end

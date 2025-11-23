@@ -22,7 +22,6 @@ module flag_reg (
         end
     end
 
-    // Output mapping
     assign y[2] = toverflowflag;
     assign y[3] = tcarryflag;
     assign y[0] = tzeroflag;

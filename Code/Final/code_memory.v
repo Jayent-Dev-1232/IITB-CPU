@@ -1,5 +1,3 @@
-// code_memory.v : 64-word code memory with BIOS init (0..31) + USER (32..63)
-
 module code_memory (
     input  wire        clk,
     input  wire [5:0]  addr,
@@ -9,13 +7,11 @@ module code_memory (
     input  wire [15:0] write_data
 );
 
-    // 64 words of 16-bit memory
     reg [15:0] mem [0:63];
     integer i;
 
-    // Initialize BIOS region (0..31) and USER code (32..63)
     initial begin
-        mem[0]  = 16'b0000000000000000;   // default not provided in VHDL, set = 0
+        mem[0]  = 16'b0000000000000000;
         mem[1]  = 16'b1110000000011110;
 
         mem[2]  = 16'b0000000000000000;
@@ -73,13 +69,11 @@ module code_memory (
             mem[i] = 16'b0000000000000000;
     end
 
-    // Write operation (synchronous)
     always @(posedge clk) begin
         if (write_enable)
             mem[write_addr] <= write_data;
     end
 
-    // Read operation (asynchronous)
     always @(*) begin
         data_out = mem[addr];
     end

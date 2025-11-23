@@ -20,7 +20,6 @@ module control (
     output wire [4:0]  opi_o
 );
 
-    // Internal signals
     wire [22:0] op  = opcode[22:0];
     wire [1:0]  x   = opcode[26:25];
     wire [1:0]  y   = opcode[24:23];
@@ -28,15 +27,12 @@ module control (
     wire [30:0] inp = {8'b00000000, op};
     wire [4:0]  opi;
 
-    // Encoder instantiation (same as VHDL)
     encoder_31_to_5 encoder_inst (
         .in_vec(inp),
         .code(opi)
     );
 
-    // Main combinational control logic
     always @(*) begin
-        // Default values (all zeros except pc_we = 1)
         imem_we          = 1'b0;
         pc_mux           = 1'b0;
         pc_we            = 1'b1;
@@ -54,17 +50,14 @@ module control (
 
         case (opi)
 
-            // --------------------------------------------------------------
             5'b00000: begin end   // NOOP
 
-            // --------------------------------------------------------------
             5'b00001: begin       // INPUTC
                 imem_we        = 1'b1;
                 pc_we          = 1'b1;
                 alu_result_mux = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b00010: begin       // INPUTCF
                 imem_we     = 1'b1;
                 pc_we       = 1'b1;
@@ -73,7 +66,6 @@ module control (
                 alu_op      = 2'b10;
             end
 
-            // --------------------------------------------------------------
             5'b00011: begin       // INPUTD
                 pc_we          = 1'b1;
                 alu_result_mux = 1'b1;
@@ -81,7 +73,6 @@ module control (
                 dmem_write_en  = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b00100: begin       // INPUTDF
                 reg_port0_sel = x;
                 alu_src_mux   = 1'b1;
@@ -90,7 +81,6 @@ module control (
                 dmem_write_en  = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b00101: begin       // MOVE
                 reg_port0_sel = y;
                 reg_write_sel = x;
@@ -98,14 +88,12 @@ module control (
                 alu_op        = 2'b10;
             end
 
-            // --------------------------------------------------------------
             5'b00110: begin       // LOADI / LOADP
                 reg_write_sel  = x;
                 reg_write_en   = 1'b1;
                 alu_result_mux = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b00111: begin       // ADD
                 reg_port0_sel = x;
                 reg_port1_sel = y;
@@ -115,7 +103,6 @@ module control (
                 flag_write_en = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b01000: begin       // ADDI
                 reg_port0_sel = x;
                 reg_write_sel = x;
@@ -125,7 +112,6 @@ module control (
                 flag_write_en = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b01001: begin       // SUB
                 reg_port0_sel = x;
                 reg_port1_sel = y;
@@ -135,7 +121,6 @@ module control (
                 flag_write_en = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b01010: begin       // SUBI
                 reg_port0_sel = x;
                 reg_write_sel = x;
@@ -145,7 +130,6 @@ module control (
                 flag_write_en = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b01011: begin       // LOAD
                 reg_write_sel   = x;
                 reg_write_en    = 1'b1;
@@ -153,7 +137,6 @@ module control (
                 reg_writeback_mux = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b01100: begin       // LOADF
                 reg_port0_sel   = y;
                 reg_write_sel   = x;
@@ -163,14 +146,12 @@ module control (
                 reg_writeback_mux = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b01101: begin       // STORE
                 reg_port1_sel = x;
-                alu_result_mux = 1'b1;
+                alu_result_mux = 1'b0;
                 dmem_write_en  = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b01110: begin       // STOREF
                 reg_port0_sel = y;
                 reg_port1_sel = x;
@@ -179,7 +160,6 @@ module control (
                 dmem_write_en = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b01111: begin       // SHIFTL
                 reg_port0_sel = x;
                 reg_write_sel = x;
@@ -187,7 +167,6 @@ module control (
                 flag_write_en = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b10000: begin       // SHIFTR
                 reg_port0_sel = x;
                 reg_write_sel = x;
@@ -196,7 +175,6 @@ module control (
                 alu_op        = 2'b01;
             end
 
-            // --------------------------------------------------------------
             5'b10001: begin       // CMP
                 reg_port0_sel = x;
                 reg_port1_sel = y;
@@ -204,33 +182,28 @@ module control (
                 flag_write_en = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b10010: begin       // JUMP
                 pc_mux = 1'b1;
             end
 
-            // --------------------------------------------------------------
             5'b10011: begin       // BRE / BRZ
                 pc_mux = flags[0];
             end
 
-            // --------------------------------------------------------------
             5'b10100: begin       // BRNE / BRNZ
                 pc_mux = ~flags[0];
             end
 
-            // --------------------------------------------------------------
             5'b10101: begin       // BRG
                 pc_mux = (~flags[0]) & (flags[1] ~^ flags[2]);
             end
 
-            // --------------------------------------------------------------
             5'b10110: begin       // BRGE
                 pc_mux = (flags[1] ~^ flags[2]);
             end
 
             default: begin
-                // null (all defaults already applied)
+                
             end
         endcase
     end

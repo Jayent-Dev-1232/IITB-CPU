@@ -27,26 +27,16 @@ module alu (
         res_u   = 0;
 
         case(op)
-
-            // --------------------------------------------------------------
-            // 00 : SHIFT LEFT (logical)
-            // --------------------------------------------------------------
             2'b00: begin
-                carry_s = a[7];         // MSB shifted out
+                carry_s = a[7];
                 res_u   = a_u << 1;
             end
 
-            // --------------------------------------------------------------
-            // 01 : SHIFT RIGHT (logical)
-            // --------------------------------------------------------------
             2'b01: begin
-                carry_s = a[0];         // LSB shifted out
+                carry_s = a[0];
                 res_u   = a_u >> 1;
             end
 
-            // --------------------------------------------------------------
-            // 10 : ADD
-            // --------------------------------------------------------------
             2'b10: begin
                 tmp    = {1'b0, a_u} + {1'b0, b_u};
                 res_u  = tmp[7:0];
@@ -56,15 +46,10 @@ module alu (
                 ov_s = (a[7] ^ tmp[7]) & ~(a[7] ^ b[7]);
             end
 
-            // --------------------------------------------------------------
-            // 11 : SUBTRACT (a - b)
-            // --------------------------------------------------------------
             2'b11: begin
                 tmp    = {1'b0, a_u} - {1'b0, b_u};
                 res_u  = tmp[7:0];
-                carry_s = tmp[8];   // same borrow convention as VHDL
-
-                // signed overflow
+                carry_s = tmp[8];
                 ov_s = (a[7] ^ b[7]) & (a[7] ^ tmp[7]);
             end
 
@@ -74,7 +59,6 @@ module alu (
         endcase
     end
 
-    // Output mapping
     always @(*) begin
         result   = res_u;
         carry    = carry_s;
