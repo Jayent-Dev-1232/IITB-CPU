@@ -1,25 +1,25 @@
 `timescale 1ns/1ps
 
 module cpu (
-    input  wire         clk,
-    input  wire         rst,
-    input  wire [15:0]  switches,
+    input  wire         clk, // clock
+    input  wire         rst, // active high synchronous reset
+    input  wire [15:0]  switches, // externally input from user
 
-    output wire [26:0]  op_o,
-    output wire [15:0]  instr_o,
-    output wire [5:0]   pc_o,
-    output wire         pc_mux_o,
-    output wire         im_write_o,
-    output wire [127:0] data,
-    output wire [31:0]  reges,
-    output wire [4:0]   opi_o,
-    output wire [3:0]   flags_out,
-    output wire [7:0]   alu_res_o
+    output wire [26:0]  op_o, // output of opcode decoder
+    output wire [15:0]  instr_o, // output of code memory
+    output wire [5:0]   pc_o, // debug output of program memory
+    output wire         pc_mux_o, // debug select of PC MUX
+    output wire         im_write_o, // debug code memory write enable
+    output wire [127:0] data, // 16 bytes of data memory
+    output wire [31:0]  reges, // 4 bytes of register data
+    output wire [4:0]   opi_o, // debug address of one hot encoded opcode
+    output wire [3:0]   flags_out, // debug break flags
+    output wire [7:0]   alu_res_o // debug ALU output
 );
 
     wire  [5:0]  pc;
     wire [15:0] instr;
-    wire [127:0] data_led;
+    wire [127:0] data_output;
 
     wire [26:0] opcode;
 
@@ -33,7 +33,7 @@ module cpu (
     wire [7:0]  reg_wdata;
 
     wire        alu_src_mux;
-    wire [1:0]  alu_op;
+    wire [1:0]  ALU_select;
     wire [7:0]  alu_b;
     wire [7:0]  alu_result8;
     wire [7:0]  alu_result;
@@ -58,40 +58,40 @@ module cpu (
 
     wire [4:0] opi_O;
 
-    pc_update pc_inst (
+    program_counter pc_inst (
         .clk      (clk),
         .rst      (rst),
-        .pc_we    (pc_we),
+        .pc_write_en    (pc_we),
         .pc_mux   (pc_mux),
-        .load_val (instr[5:0]),
+        .offset_val (instr[5:0]),
         .pc_out   (pc)
     );
 
-    code_memory imem (
+    code_mem imem (
         .clk          (clk),
-        .addr         (pc),
+        .read_address         (pc),
         .data_out     (instr),
-        .write_enable (im_write),
-        .write_addr   (alu_result[5:0]),
+        .write_en (im_write),
+        .write_address   (alu_result[5:0]),
         .write_data   (switches)
     );
 
     opcode_decoder decoder (
-        .instr  (instr[15:8]),
+        .cmem_in  (instr[15:8]),
         .opcode (opcode)
     );
 
-    flag_reg flag (
+    flag_register flag (
         .carry    (flags[3]),
         .overflow (flags[2]),
         .negative (flags[1]),
         .zero     (flags[0]),
         .clk      (clk),
-        .c14      (flag_write_en),
+        .flag_write_en      (flag_write_en),
         .y        (flags_r)
     );
 
-    control control_unit (
+    control_unit control_unit (
         .opcode            (opcode),
         .flags             (flags_r),
 
@@ -103,7 +103,7 @@ module cpu (
         .reg_write_sel     (reg_write_sel),
         .reg_write_en      (reg_write_en),
         .alu_src_mux       (alu_src_mux),
-        .alu_op            (alu_op),
+        .alu_select            (ALU_select),
         .flag_write_en     (flag_write_en),
         .alu_result_mux    (alu_result_mux),
         .dmem_input_mux    (dmem_input_mux),
@@ -133,21 +133,21 @@ module cpu (
     alu alu_inst (
         .a        (reg_out_p0),
         .b        (alu_b),
-        .op       (alu_op),
-        .result   (alu_result8),
+        .ALU_select       (ALU_select),
+        .ALU_result   (alu_result8),
         .carry    (flags[3]),
         .overflow (flags[2]),
         .negative (flags[1]),
         .zero     (flags[0])
     );
 
-    data_memory dmem (
+    data_mem dmem (
         .clk          (clk),
-        .addr         (alu_result[3:0]),
+        .address         (alu_result[3:0]),
         .data_in      (dmem_wdata8),
-        .write_enable (dmem_write_en),
+        .write_en (dmem_write_en),
         .data_out     (dmem_rdata8),
-        .data_led     (data_led)
+        .data_output     (data_output)
     );
 
     assign dmem_wdata8 = (dmem_input_mux == 1'b1) ? switches[7:0] : reg_out_p1;
@@ -161,7 +161,7 @@ module cpu (
     assign pc_mux_o    = pc_mux;
     assign im_write_o  = im_write;
     assign opcode_output        = opcode;
-    assign data        = data_led;
+    assign data        = data_output;
     assign flags_out   = flags_r;
     assign alu_res_o   = alu_result;
     assign opi_o       = opi_O;

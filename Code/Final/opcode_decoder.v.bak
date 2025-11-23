@@ -1,5 +1,5 @@
 module opcode_decoder (
-    input  wire [7:0] cmem_in,
+    input  wire [7:0] instr,
     output wire [26:0] opcode
 );
 
@@ -7,8 +7,8 @@ module opcode_decoder (
 
     wire [15:0] dec1_out;
 
-    dec_4_to_16 decoder_1 (
-        .w(cmem_in[7:4]),
+    decoder_4_to_16 decoder_1 (
+        .w(instr[7:4]),
         .en(1'b1),
         .y(dec1_out)
     );
@@ -20,25 +20,25 @@ module opcode_decoder (
     assign opcode[18:17] = dec1_out[14:13];
     assign en3         = dec1_out[15];
 
-    dec_2_to_4 decoder_2 (
-        .w(cmem_in[1:0]),
+    decoder_2_to_4 decoder_2 (
+        .w(instr[1:0]),
         .en(en1),
         .y(opcode[4:1])
     );
 
-    dec_1_to_2 decoder_3 (
-        .w(cmem_in[0]),
+    decoder_1_to_2 decoder_3 (
+        .w(instr[0]),
         .en(en2),
         .y(opcode[16:15])
     );
 
-    dec_2_to_4 decoder_4 (
-        .w(cmem_in[1:0]),
+    decoder_2_to_4 decoder_4 (
+        .w(instr[1:0]),
         .en(en3),
         .y(opcode[22:19])
     );
 
-    assign opcode[26:25] = cmem_in[3:2];
-    assign opcode[24:23] = cmem_in[1:0];
+    assign opcode[26:25] = instr[3:2];
+    assign opcode[24:23] = instr[1:0];
 
 endmodule

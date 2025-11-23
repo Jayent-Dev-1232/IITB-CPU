@@ -23,7 +23,7 @@ module tb_load_and_run;
     wire [7:0]   alu_result;
 
     // -----------------------------
-    // Instantiate CPU
+    // Instantiate top level Final CPU
     // -----------------------------
     cpu uut (
         .clk(clk),
@@ -42,7 +42,7 @@ module tb_load_and_run;
     );
 
     // -----------------------------
-    // Split DATA into 16 bytes
+    // Split DATA into 16 bytes (for output)
     // -----------------------------
     wire [7:0] d0  = data[7:0];
     wire [7:0] d1  = data[15:8];

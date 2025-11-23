@@ -1,5 +1,5 @@
 Flow report for cpu
-Sun Nov 23 19:29:19 2025
+Sun Nov 23 22:49:32 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Sun Nov 23 19:29:19 2025       ;
+; Flow Status                        ; Successful - Sun Nov 23 22:49:32 2025       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; cpu                                         ;
 ; Top-level Entity Name              ; cpu                                         ;
@@ -66,7 +66,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/23/2025 19:29:08 ;
+; Start date & time ; 11/23/2025 22:49:19 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; cpu                 ;
 +-------------------+---------------------+
@@ -77,7 +77,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------+----------------------------------------+---------------+-------------+-----------------+
 ; Assignment Name                      ; Value                                  ; Default Value ; Entity Name ; Section Id      ;
 +--------------------------------------+----------------------------------------+---------------+-------------+-----------------+
-; COMPILER_SIGNATURE_ID                ; 1098700727705.176390634803792          ; --            ; --          ; --              ;
+; COMPILER_SIGNATURE_ID                ; 1098700727705.176391835922040          ; --            ; --          ; --              ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_load_and_run ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; tb_load_and_run                        ; --            ; --          ; eda_simulation  ;
 ; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                            ; --            ; --          ; eda_simulation  ;
@@ -103,8 +103,8 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:11     ; 1.0                     ; 4862 MB             ; 00:00:21                           ;
-; Total                ; 00:00:11     ; --                      ; --                  ; 00:00:21                           ;
+; Analysis & Synthesis ; 00:00:13     ; 1.0                     ; 4862 MB             ; 00:00:26                           ;
+; Total                ; 00:00:13     ; --                      ; --                  ; 00:00:26                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

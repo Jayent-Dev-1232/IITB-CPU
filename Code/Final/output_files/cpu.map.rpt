@@ -1,5 +1,5 @@
 Analysis & Synthesis report for cpu
-Sun Nov 23 19:29:19 2025
+Sun Nov 23 22:49:32 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -16,8 +16,8 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   8. General Register Statistics
   9. Inverted Register Statistics
  10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Port Connectivity Checks: "control:control_unit|encoder_31_to_5:encoder_inst"
- 12. Port Connectivity Checks: "opcode_decoder:decoder|decoder_4_to_16:decoder_1"
+ 11. Port Connectivity Checks: "control_unit:control_unit|enc_31_to_5:encoder_inst"
+ 12. Port Connectivity Checks: "opcode_decoder:decoder|dec_4_to_16:decoder_1"
  13. Post-Synthesis Netlist Statistics for Top Partition
  14. Elapsed Time Per Partition
  15. Analysis & Synthesis Messages
@@ -47,7 +47,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Nov 23 19:29:19 2025       ;
+; Analysis & Synthesis Status        ; Successful - Sun Nov 23 22:49:32 2025       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; cpu                                         ;
 ; Top-level Entity Name              ; cpu                                         ;
@@ -182,17 +182,17 @@ refer to the applicable agreement for further details.
 ; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                               ; Library ;
 +----------------------------------+-----------------+------------------------+------------------------------------------------------------+---------+
 ; register_file.v                  ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/register_file.v   ;         ;
-; pc_update.v                      ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/pc_update.v       ;         ;
+; program_counter.v                ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/program_counter.v ;         ;
 ; opcode_decoder.v                 ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/opcode_decoder.v  ;         ;
-; flag_reg.v                       ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/flag_reg.v        ;         ;
-; encoder_31_to_5.v                ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/encoder_31_to_5.v ;         ;
-; decoder_4_to_16.v                ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/decoder_4_to_16.v ;         ;
-; decoder_2_to_4.v                 ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/decoder_2_to_4.v  ;         ;
-; decoder_1_to_2.v                 ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/decoder_1_to_2.v  ;         ;
-; data_memory.v                    ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/data_memory.v     ;         ;
+; flag_register.v                  ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/flag_register.v   ;         ;
+; enc_31_to_5.v                    ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/enc_31_to_5.v     ;         ;
+; dec_4_to_16.v                    ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_4_to_16.v     ;         ;
+; dec_2_to_4.v                     ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_2_to_4.v      ;         ;
+; dec_1_to_2.v                     ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_1_to_2.v      ;         ;
+; data_mem.v                       ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/data_mem.v        ;         ;
 ; cpu.v                            ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v             ;         ;
-; control.v                        ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/control.v         ;         ;
-; code_memory.v                    ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/code_memory.v     ;         ;
+; control_unit.v                   ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/control_unit.v    ;         ;
+; code_mem.v                       ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/code_mem.v        ;         ;
 ; alu.v                            ; yes             ; User Verilog HDL File  ; E:/IITB/3rd_Semester/IITB-CPU/Code/Final/alu.v             ;         ;
 +----------------------------------+-----------------+------------------------+------------------------------------------------------------+---------+
 
@@ -229,21 +229,21 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                 ;
-+--------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------+-----------------+--------------+
-; Compilation Hierarchy Node           ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                    ; Entity Name     ; Library Name ;
-+--------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------+-----------------+--------------+
-; |cpu                                 ; 1166 (113)          ; 1194 (0)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 246  ; 0            ; 0          ; |cpu                                                   ; cpu             ; work         ;
-;    |alu:alu_inst|                    ; 43 (43)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|alu:alu_inst                                      ; alu             ; work         ;
-;    |code_memory:imem|                ; 862 (862)           ; 1024 (1024)               ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|code_memory:imem                                  ; code_memory     ; work         ;
-;    |control:control_unit|            ; 60 (47)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|control:control_unit                              ; control         ; work         ;
-;       |encoder_31_to_5:encoder_inst| ; 13 (13)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|control:control_unit|encoder_31_to_5:encoder_inst ; encoder_31_to_5 ; work         ;
-;    |data_memory:dmem|                ; 40 (40)             ; 128 (128)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|data_memory:dmem                                  ; data_memory     ; work         ;
-;    |flag_reg:flag|                   ; 0 (0)               ; 4 (4)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|flag_reg:flag                                     ; flag_reg        ; work         ;
-;    |pc_update:pc_inst|               ; 12 (12)             ; 6 (6)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|pc_update:pc_inst                                 ; pc_update       ; work         ;
-;    |register_file:regs_inst|         ; 36 (36)             ; 32 (32)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|register_file:regs_inst                           ; register_file   ; work         ;
-+--------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------+-----------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                              ;
++----------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node       ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                     ; Entity Name     ; Library Name ;
++----------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------+-----------------+--------------+
+; |cpu                             ; 1166 (113)          ; 1194 (0)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 246  ; 0            ; 0          ; |cpu                                                    ; cpu             ; work         ;
+;    |alu:alu_inst|                ; 43 (43)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|alu:alu_inst                                       ; alu             ; work         ;
+;    |code_mem:imem|               ; 862 (862)           ; 1024 (1024)               ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|code_mem:imem                                      ; code_mem        ; work         ;
+;    |control_unit:control_unit|   ; 60 (47)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|control_unit:control_unit                          ; control_unit    ; work         ;
+;       |enc_31_to_5:encoder_inst| ; 13 (13)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|control_unit:control_unit|enc_31_to_5:encoder_inst ; enc_31_to_5     ; work         ;
+;    |data_mem:dmem|               ; 40 (40)             ; 128 (128)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|data_mem:dmem                                      ; data_mem        ; work         ;
+;    |flag_register:flag|          ; 0 (0)               ; 4 (4)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|flag_register:flag                                 ; flag_register   ; work         ;
+;    |program_counter:pc_inst|     ; 12 (12)             ; 6 (6)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|program_counter:pc_inst                            ; program_counter ; work         ;
+;    |register_file:regs_inst|     ; 36 (36)             ; 32 (32)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |cpu|register_file:regs_inst                            ; register_file   ; work         ;
++----------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -267,56 +267,56 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------------------------+---------+
 ; Inverted Register                       ; Fan out ;
 +-----------------------------------------+---------+
-; data_memory:dmem|mem[0][0]              ; 2       ;
-; data_memory:dmem|mem[0][1]              ; 2       ;
-; data_memory:dmem|mem[0][2]              ; 2       ;
-; data_memory:dmem|mem[1][0]              ; 2       ;
-; data_memory:dmem|mem[1][1]              ; 2       ;
-; data_memory:dmem|mem[2][1]              ; 2       ;
-; data_memory:dmem|mem[3][0]              ; 2       ;
-; data_memory:dmem|mem[4][1]              ; 2       ;
-; data_memory:dmem|mem[4][2]              ; 2       ;
-; data_memory:dmem|mem[5][2]              ; 2       ;
-; data_memory:dmem|mem[6][0]              ; 2       ;
-; data_memory:dmem|mem[6][2]              ; 2       ;
-; data_memory:dmem|mem[7][3]              ; 2       ;
-; data_memory:dmem|mem[8][0]              ; 2       ;
-; data_memory:dmem|mem[8][1]              ; 2       ;
-; data_memory:dmem|mem[8][2]              ; 2       ;
+; data_mem:dmem|memory_array[0][0]        ; 2       ;
+; data_mem:dmem|memory_array[0][1]        ; 2       ;
+; data_mem:dmem|memory_array[0][2]        ; 2       ;
+; data_mem:dmem|memory_array[1][0]        ; 2       ;
+; data_mem:dmem|memory_array[1][1]        ; 2       ;
+; data_mem:dmem|memory_array[2][1]        ; 2       ;
+; data_mem:dmem|memory_array[3][0]        ; 2       ;
+; data_mem:dmem|memory_array[4][1]        ; 2       ;
+; data_mem:dmem|memory_array[4][2]        ; 2       ;
+; data_mem:dmem|memory_array[5][2]        ; 2       ;
+; data_mem:dmem|memory_array[6][0]        ; 2       ;
+; data_mem:dmem|memory_array[6][2]        ; 2       ;
+; data_mem:dmem|memory_array[7][3]        ; 2       ;
+; data_mem:dmem|memory_array[8][0]        ; 2       ;
+; data_mem:dmem|memory_array[8][1]        ; 2       ;
+; data_mem:dmem|memory_array[8][2]        ; 2       ;
 ; Total number of inverted registers = 16 ;         ;
 +-----------------------------------------+---------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                    ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output          ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |cpu|alu:alu_inst|Mux6              ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |cpu|register_file:regs_inst|Mux0   ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |cpu|register_file:regs_inst|Mux12  ;
-; 17:1               ; 8 bits    ; 88 LEs        ; 88 LEs               ; 0 LEs                  ; No         ; |cpu|reg_wdata[7]                   ;
-; 10:1               ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |cpu|control:control_unit|Selector4 ;
-; 11:1               ; 2 bits    ; 14 LEs        ; 6 LEs                ; 8 LEs                  ; No         ; |cpu|control:control_unit|Selector2 ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |cpu|alu:alu_inst|Mux6                   ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |cpu|register_file:regs_inst|Mux0        ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |cpu|register_file:regs_inst|Mux12       ;
+; 17:1               ; 8 bits    ; 88 LEs        ; 88 LEs               ; 0 LEs                  ; No         ; |cpu|reg_wdata[7]                        ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |cpu|control_unit:control_unit|Selector4 ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 6 LEs                ; 8 LEs                  ; No         ; |cpu|control_unit:control_unit|Selector2 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
 
 
-+-------------------------------------------------------------------------------+
-; Port Connectivity Checks: "control:control_unit|encoder_31_to_5:encoder_inst" ;
-+----------------+-------+----------+-------------------------------------------+
-; Port           ; Type  ; Severity ; Details                                   ;
-+----------------+-------+----------+-------------------------------------------+
-; in_vec[30..23] ; Input ; Info     ; Stuck at GND                              ;
-+----------------+-------+----------+-------------------------------------------+
++--------------------------------------------------------------------------------+
+; Port Connectivity Checks: "control_unit:control_unit|enc_31_to_5:encoder_inst" ;
++----------------+-------+----------+--------------------------------------------+
+; Port           ; Type  ; Severity ; Details                                    ;
++----------------+-------+----------+--------------------------------------------+
+; in_vec[30..23] ; Input ; Info     ; Stuck at GND                               ;
++----------------+-------+----------+--------------------------------------------+
 
 
-+------------------------------------------------------------------------------+
-; Port Connectivity Checks: "opcode_decoder:decoder|decoder_4_to_16:decoder_1" ;
-+------+-------+----------+----------------------------------------------------+
-; Port ; Type  ; Severity ; Details                                            ;
-+------+-------+----------+----------------------------------------------------+
-; en   ; Input ; Info     ; Stuck at VCC                                       ;
-+------+-------+----------+----------------------------------------------------+
++--------------------------------------------------------------------------+
+; Port Connectivity Checks: "opcode_decoder:decoder|dec_4_to_16:decoder_1" ;
++------+-------+----------+------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                        ;
++------+-------+----------+------------------------------------------------+
+; en   ; Input ; Info     ; Stuck at VCC                                   ;
++------+-------+----------+------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -360,7 +360,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sun Nov 23 19:29:08 2025
+    Info: Processing started: Sun Nov 23 22:49:19 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cpu -c cpu
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -368,28 +368,28 @@ Info (12021): Found 1 design units, including 1 entities, in source file tb_load
     Info (12023): Found entity 1: tb_load_and_run File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/tb_load_and_run.v Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file register_file.v
     Info (12023): Found entity 1: register_file File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/register_file.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file pc_update.v
-    Info (12023): Found entity 1: pc_update File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/pc_update.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file program_counter.v
+    Info (12023): Found entity 1: program_counter File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/program_counter.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file opcode_decoder.v
     Info (12023): Found entity 1: opcode_decoder File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/opcode_decoder.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file flag_reg.v
-    Info (12023): Found entity 1: flag_reg File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/flag_reg.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file encoder_31_to_5.v
-    Info (12023): Found entity 1: encoder_31_to_5 File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/encoder_31_to_5.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file decoder_4_to_16.v
-    Info (12023): Found entity 1: decoder_4_to_16 File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/decoder_4_to_16.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file decoder_2_to_4.v
-    Info (12023): Found entity 1: decoder_2_to_4 File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/decoder_2_to_4.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file decoder_1_to_2.v
-    Info (12023): Found entity 1: decoder_1_to_2 File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/decoder_1_to_2.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file data_memory.v
-    Info (12023): Found entity 1: data_memory File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/data_memory.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file flag_register.v
+    Info (12023): Found entity 1: flag_register File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/flag_register.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file enc_31_to_5.v
+    Info (12023): Found entity 1: enc_31_to_5 File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/enc_31_to_5.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file dec_4_to_16.v
+    Info (12023): Found entity 1: dec_4_to_16 File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_4_to_16.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file dec_2_to_4.v
+    Info (12023): Found entity 1: dec_2_to_4 File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_2_to_4.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file dec_1_to_2.v
+    Info (12023): Found entity 1: dec_1_to_2 File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_1_to_2.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file data_mem.v
+    Info (12023): Found entity 1: data_mem File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/data_mem.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file cpu.v
     Info (12023): Found entity 1: cpu File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 3
-Info (12021): Found 1 design units, including 1 entities, in source file control.v
-    Info (12023): Found entity 1: control File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/control.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file code_memory.v
-    Info (12023): Found entity 1: code_memory File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/code_memory.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file control_unit.v
+    Info (12023): Found entity 1: control_unit File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/control_unit.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file code_mem.v
+    Info (12023): Found entity 1: code_mem File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/code_mem.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
     Info (12023): Found entity 1: alu File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/alu.v Line: 1
 Warning (10236): Verilog HDL Implicit Net warning at cpu.v(163): created implicit net for "opcode_output" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 163
@@ -397,21 +397,21 @@ Info (12127): Elaborating entity "cpu" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at cpu.v(163): object "opcode_output" assigned a value but never read File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 163
 Warning (10230): Verilog HDL assignment warning at cpu.v(163): truncated value with size 27 to match size of target (1) File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 163
 Warning (10034): Output port "op_o" at cpu.v(8) has no driver File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 8
-Info (12128): Elaborating entity "pc_update" for hierarchy "pc_update:pc_inst" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 68
-Info (12128): Elaborating entity "code_memory" for hierarchy "code_memory:imem" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 77
+Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:pc_inst" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 68
+Info (12128): Elaborating entity "code_mem" for hierarchy "code_mem:imem" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 77
 Info (12128): Elaborating entity "opcode_decoder" for hierarchy "opcode_decoder:decoder" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 82
-Info (12128): Elaborating entity "decoder_4_to_16" for hierarchy "opcode_decoder:decoder|decoder_4_to_16:decoder_1" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/opcode_decoder.v Line: 14
-Info (12128): Elaborating entity "decoder_2_to_4" for hierarchy "opcode_decoder:decoder|decoder_2_to_4:decoder_2" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/opcode_decoder.v Line: 27
-Info (12128): Elaborating entity "decoder_1_to_2" for hierarchy "opcode_decoder:decoder|decoder_1_to_2:decoder_3" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/opcode_decoder.v Line: 33
-Info (12128): Elaborating entity "flag_reg" for hierarchy "flag_reg:flag" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 92
-Info (12128): Elaborating entity "control" for hierarchy "control:control_unit" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 113
-Info (12128): Elaborating entity "encoder_31_to_5" for hierarchy "control:control_unit|encoder_31_to_5:encoder_inst" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/control.v Line: 33
+Info (12128): Elaborating entity "dec_4_to_16" for hierarchy "opcode_decoder:decoder|dec_4_to_16:decoder_1" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/opcode_decoder.v Line: 14
+Info (12128): Elaborating entity "dec_2_to_4" for hierarchy "opcode_decoder:decoder|dec_2_to_4:decoder_2" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/opcode_decoder.v Line: 27
+Info (12128): Elaborating entity "dec_1_to_2" for hierarchy "opcode_decoder:decoder|dec_1_to_2:decoder_3" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/opcode_decoder.v Line: 33
+Info (12128): Elaborating entity "flag_register" for hierarchy "flag_register:flag" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 92
+Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:control_unit" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 113
+Info (12128): Elaborating entity "enc_31_to_5" for hierarchy "control_unit:control_unit|enc_31_to_5:encoder_inst" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/control_unit.v Line: 33
 Info (12128): Elaborating entity "register_file" for hierarchy "register_file:regs_inst" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 129
 Info (12128): Elaborating entity "alu" for hierarchy "alu:alu_inst" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 142
-Warning (10240): Verilog HDL Always Construct warning at alu.v(22): inferring latch(es) for variable "tmp", which holds its previous value in one or more paths through the always construct File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/alu.v Line: 22
-Info (12128): Elaborating entity "data_memory" for hierarchy "data_memory:dmem" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 151
+Warning (10240): Verilog HDL Always Construct warning at alu.v(21): inferring latch(es) for variable "tmp", which holds its previous value in one or more paths through the always construct File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/alu.v Line: 21
+Info (12128): Elaborating entity "data_mem" for hierarchy "data_mem:dmem" File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 151
 Info (276014): Found 1 instances of uninferred RAM logic
-    Info (276013): RAM logic "code_memory:imem|mem" is uninferred because MIF is not supported for the selected family File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/code_memory.v Line: 10
+    Info (276013): RAM logic "code_mem:imem|memory_array" is uninferred because MIF is not supported for the selected family File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/code_mem.v Line: 10
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "op_o[0]" is stuck at GND File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 8
     Warning (13410): Pin "op_o[1]" is stuck at GND File: E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v Line: 8
@@ -450,9 +450,9 @@ Info (21057): Implemented 2470 device resources after synthesis - the final reso
     Info (21061): Implemented 2224 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 34 warnings
     Info: Peak virtual memory: 4862 megabytes
-    Info: Processing ended: Sun Nov 23 19:29:19 2025
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:21
+    Info: Processing ended: Sun Nov 23 22:49:32 2025
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:26
 
 
 +------------------------------------------+

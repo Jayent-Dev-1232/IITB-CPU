@@ -1,4 +1,4 @@
-module decoder_1_to_2 (
+module dec_1_to_2 (
     input  wire w,
     input  wire en,
     output reg  [1:0] y

@@ -1,5 +1,5 @@
 $date
-	Sun Nov 23 19:29:30 2025
+	Sun Nov 23 22:52:35 2025
 $end
 $version
 	ModelSim Version 10.5b
@@ -638,134 +638,134 @@ $var wire 1 4$ instr [3] $end
 $var wire 1 5$ instr [2] $end
 $var wire 1 6$ instr [1] $end
 $var wire 1 7$ instr [0] $end
-$var wire 1 8$ data_led [127] $end
-$var wire 1 9$ data_led [126] $end
-$var wire 1 :$ data_led [125] $end
-$var wire 1 ;$ data_led [124] $end
-$var wire 1 <$ data_led [123] $end
-$var wire 1 =$ data_led [122] $end
-$var wire 1 >$ data_led [121] $end
-$var wire 1 ?$ data_led [120] $end
-$var wire 1 @$ data_led [119] $end
-$var wire 1 A$ data_led [118] $end
-$var wire 1 B$ data_led [117] $end
-$var wire 1 C$ data_led [116] $end
-$var wire 1 D$ data_led [115] $end
-$var wire 1 E$ data_led [114] $end
-$var wire 1 F$ data_led [113] $end
-$var wire 1 G$ data_led [112] $end
-$var wire 1 H$ data_led [111] $end
-$var wire 1 I$ data_led [110] $end
-$var wire 1 J$ data_led [109] $end
-$var wire 1 K$ data_led [108] $end
-$var wire 1 L$ data_led [107] $end
-$var wire 1 M$ data_led [106] $end
-$var wire 1 N$ data_led [105] $end
-$var wire 1 O$ data_led [104] $end
-$var wire 1 P$ data_led [103] $end
-$var wire 1 Q$ data_led [102] $end
-$var wire 1 R$ data_led [101] $end
-$var wire 1 S$ data_led [100] $end
-$var wire 1 T$ data_led [99] $end
-$var wire 1 U$ data_led [98] $end
-$var wire 1 V$ data_led [97] $end
-$var wire 1 W$ data_led [96] $end
-$var wire 1 X$ data_led [95] $end
-$var wire 1 Y$ data_led [94] $end
-$var wire 1 Z$ data_led [93] $end
-$var wire 1 [$ data_led [92] $end
-$var wire 1 \$ data_led [91] $end
-$var wire 1 ]$ data_led [90] $end
-$var wire 1 ^$ data_led [89] $end
-$var wire 1 _$ data_led [88] $end
-$var wire 1 `$ data_led [87] $end
-$var wire 1 a$ data_led [86] $end
-$var wire 1 b$ data_led [85] $end
-$var wire 1 c$ data_led [84] $end
-$var wire 1 d$ data_led [83] $end
-$var wire 1 e$ data_led [82] $end
-$var wire 1 f$ data_led [81] $end
-$var wire 1 g$ data_led [80] $end
-$var wire 1 h$ data_led [79] $end
-$var wire 1 i$ data_led [78] $end
-$var wire 1 j$ data_led [77] $end
-$var wire 1 k$ data_led [76] $end
-$var wire 1 l$ data_led [75] $end
-$var wire 1 m$ data_led [74] $end
-$var wire 1 n$ data_led [73] $end
-$var wire 1 o$ data_led [72] $end
-$var wire 1 p$ data_led [71] $end
-$var wire 1 q$ data_led [70] $end
-$var wire 1 r$ data_led [69] $end
-$var wire 1 s$ data_led [68] $end
-$var wire 1 t$ data_led [67] $end
-$var wire 1 u$ data_led [66] $end
-$var wire 1 v$ data_led [65] $end
-$var wire 1 w$ data_led [64] $end
-$var wire 1 x$ data_led [63] $end
-$var wire 1 y$ data_led [62] $end
-$var wire 1 z$ data_led [61] $end
-$var wire 1 {$ data_led [60] $end
-$var wire 1 |$ data_led [59] $end
-$var wire 1 }$ data_led [58] $end
-$var wire 1 ~$ data_led [57] $end
-$var wire 1 !% data_led [56] $end
-$var wire 1 "% data_led [55] $end
-$var wire 1 #% data_led [54] $end
-$var wire 1 $% data_led [53] $end
-$var wire 1 %% data_led [52] $end
-$var wire 1 &% data_led [51] $end
-$var wire 1 '% data_led [50] $end
-$var wire 1 (% data_led [49] $end
-$var wire 1 )% data_led [48] $end
-$var wire 1 *% data_led [47] $end
-$var wire 1 +% data_led [46] $end
-$var wire 1 ,% data_led [45] $end
-$var wire 1 -% data_led [44] $end
-$var wire 1 .% data_led [43] $end
-$var wire 1 /% data_led [42] $end
-$var wire 1 0% data_led [41] $end
-$var wire 1 1% data_led [40] $end
-$var wire 1 2% data_led [39] $end
-$var wire 1 3% data_led [38] $end
-$var wire 1 4% data_led [37] $end
-$var wire 1 5% data_led [36] $end
-$var wire 1 6% data_led [35] $end
-$var wire 1 7% data_led [34] $end
-$var wire 1 8% data_led [33] $end
-$var wire 1 9% data_led [32] $end
-$var wire 1 :% data_led [31] $end
-$var wire 1 ;% data_led [30] $end
-$var wire 1 <% data_led [29] $end
-$var wire 1 =% data_led [28] $end
-$var wire 1 >% data_led [27] $end
-$var wire 1 ?% data_led [26] $end
-$var wire 1 @% data_led [25] $end
-$var wire 1 A% data_led [24] $end
-$var wire 1 B% data_led [23] $end
-$var wire 1 C% data_led [22] $end
-$var wire 1 D% data_led [21] $end
-$var wire 1 E% data_led [20] $end
-$var wire 1 F% data_led [19] $end
-$var wire 1 G% data_led [18] $end
-$var wire 1 H% data_led [17] $end
-$var wire 1 I% data_led [16] $end
-$var wire 1 J% data_led [15] $end
-$var wire 1 K% data_led [14] $end
-$var wire 1 L% data_led [13] $end
-$var wire 1 M% data_led [12] $end
-$var wire 1 N% data_led [11] $end
-$var wire 1 O% data_led [10] $end
-$var wire 1 P% data_led [9] $end
-$var wire 1 Q% data_led [8] $end
-$var wire 1 R% data_led [7] $end
-$var wire 1 S% data_led [6] $end
-$var wire 1 T% data_led [5] $end
-$var wire 1 U% data_led [4] $end
-$var wire 1 V% data_led [3] $end
-$var wire 1 W% data_led [2] $end
-$var wire 1 X% data_led [1] $end
-$var wire 1 Y% data_led [0] $end
+$var wire 1 8$ data_output [127] $end
+$var wire 1 9$ data_output [126] $end
+$var wire 1 :$ data_output [125] $end
+$var wire 1 ;$ data_output [124] $end
+$var wire 1 <$ data_output [123] $end
+$var wire 1 =$ data_output [122] $end
+$var wire 1 >$ data_output [121] $end
+$var wire 1 ?$ data_output [120] $end
+$var wire 1 @$ data_output [119] $end
+$var wire 1 A$ data_output [118] $end
+$var wire 1 B$ data_output [117] $end
+$var wire 1 C$ data_output [116] $end
+$var wire 1 D$ data_output [115] $end
+$var wire 1 E$ data_output [114] $end
+$var wire 1 F$ data_output [113] $end
+$var wire 1 G$ data_output [112] $end
+$var wire 1 H$ data_output [111] $end
+$var wire 1 I$ data_output [110] $end
+$var wire 1 J$ data_output [109] $end
+$var wire 1 K$ data_output [108] $end
+$var wire 1 L$ data_output [107] $end
+$var wire 1 M$ data_output [106] $end
+$var wire 1 N$ data_output [105] $end
+$var wire 1 O$ data_output [104] $end
+$var wire 1 P$ data_output [103] $end
+$var wire 1 Q$ data_output [102] $end
+$var wire 1 R$ data_output [101] $end
+$var wire 1 S$ data_output [100] $end
+$var wire 1 T$ data_output [99] $end
+$var wire 1 U$ data_output [98] $end
+$var wire 1 V$ data_output [97] $end
+$var wire 1 W$ data_output [96] $end
+$var wire 1 X$ data_output [95] $end
+$var wire 1 Y$ data_output [94] $end
+$var wire 1 Z$ data_output [93] $end
+$var wire 1 [$ data_output [92] $end
+$var wire 1 \$ data_output [91] $end
+$var wire 1 ]$ data_output [90] $end
+$var wire 1 ^$ data_output [89] $end
+$var wire 1 _$ data_output [88] $end
+$var wire 1 `$ data_output [87] $end
+$var wire 1 a$ data_output [86] $end
+$var wire 1 b$ data_output [85] $end
+$var wire 1 c$ data_output [84] $end
+$var wire 1 d$ data_output [83] $end
+$var wire 1 e$ data_output [82] $end
+$var wire 1 f$ data_output [81] $end
+$var wire 1 g$ data_output [80] $end
+$var wire 1 h$ data_output [79] $end
+$var wire 1 i$ data_output [78] $end
+$var wire 1 j$ data_output [77] $end
+$var wire 1 k$ data_output [76] $end
+$var wire 1 l$ data_output [75] $end
+$var wire 1 m$ data_output [74] $end
+$var wire 1 n$ data_output [73] $end
+$var wire 1 o$ data_output [72] $end
+$var wire 1 p$ data_output [71] $end
+$var wire 1 q$ data_output [70] $end
+$var wire 1 r$ data_output [69] $end
+$var wire 1 s$ data_output [68] $end
+$var wire 1 t$ data_output [67] $end
+$var wire 1 u$ data_output [66] $end
+$var wire 1 v$ data_output [65] $end
+$var wire 1 w$ data_output [64] $end
+$var wire 1 x$ data_output [63] $end
+$var wire 1 y$ data_output [62] $end
+$var wire 1 z$ data_output [61] $end
+$var wire 1 {$ data_output [60] $end
+$var wire 1 |$ data_output [59] $end
+$var wire 1 }$ data_output [58] $end
+$var wire 1 ~$ data_output [57] $end
+$var wire 1 !% data_output [56] $end
+$var wire 1 "% data_output [55] $end
+$var wire 1 #% data_output [54] $end
+$var wire 1 $% data_output [53] $end
+$var wire 1 %% data_output [52] $end
+$var wire 1 &% data_output [51] $end
+$var wire 1 '% data_output [50] $end
+$var wire 1 (% data_output [49] $end
+$var wire 1 )% data_output [48] $end
+$var wire 1 *% data_output [47] $end
+$var wire 1 +% data_output [46] $end
+$var wire 1 ,% data_output [45] $end
+$var wire 1 -% data_output [44] $end
+$var wire 1 .% data_output [43] $end
+$var wire 1 /% data_output [42] $end
+$var wire 1 0% data_output [41] $end
+$var wire 1 1% data_output [40] $end
+$var wire 1 2% data_output [39] $end
+$var wire 1 3% data_output [38] $end
+$var wire 1 4% data_output [37] $end
+$var wire 1 5% data_output [36] $end
+$var wire 1 6% data_output [35] $end
+$var wire 1 7% data_output [34] $end
+$var wire 1 8% data_output [33] $end
+$var wire 1 9% data_output [32] $end
+$var wire 1 :% data_output [31] $end
+$var wire 1 ;% data_output [30] $end
+$var wire 1 <% data_output [29] $end
+$var wire 1 =% data_output [28] $end
+$var wire 1 >% data_output [27] $end
+$var wire 1 ?% data_output [26] $end
+$var wire 1 @% data_output [25] $end
+$var wire 1 A% data_output [24] $end
+$var wire 1 B% data_output [23] $end
+$var wire 1 C% data_output [22] $end
+$var wire 1 D% data_output [21] $end
+$var wire 1 E% data_output [20] $end
+$var wire 1 F% data_output [19] $end
+$var wire 1 G% data_output [18] $end
+$var wire 1 H% data_output [17] $end
+$var wire 1 I% data_output [16] $end
+$var wire 1 J% data_output [15] $end
+$var wire 1 K% data_output [14] $end
+$var wire 1 L% data_output [13] $end
+$var wire 1 M% data_output [12] $end
+$var wire 1 N% data_output [11] $end
+$var wire 1 O% data_output [10] $end
+$var wire 1 P% data_output [9] $end
+$var wire 1 Q% data_output [8] $end
+$var wire 1 R% data_output [7] $end
+$var wire 1 S% data_output [6] $end
+$var wire 1 T% data_output [5] $end
+$var wire 1 U% data_output [4] $end
+$var wire 1 V% data_output [3] $end
+$var wire 1 W% data_output [2] $end
+$var wire 1 X% data_output [1] $end
+$var wire 1 Y% data_output [0] $end
 $var wire 1 Z% opcode [26] $end
 $var wire 1 [% opcode [25] $end
 $var wire 1 \% opcode [24] $end
@@ -826,8 +826,8 @@ $var wire 1 4& reg_wdata [2] $end
 $var wire 1 5& reg_wdata [1] $end
 $var wire 1 6& reg_wdata [0] $end
 $var wire 1 7& alu_src_mux $end
-$var wire 1 8& alu_op [1] $end
-$var wire 1 9& alu_op [0] $end
+$var wire 1 8& ALU_select [1] $end
+$var wire 1 9& ALU_select [0] $end
 $var wire 1 :& alu_b [7] $end
 $var wire 1 ;& alu_b [6] $end
 $var wire 1 <& alu_b [5] $end
@@ -919,39 +919,39 @@ $var wire 1 2' opcode_output $end
 $scope module pc_inst $end
 $var wire 1 n# clk $end
 $var wire 1 o# rst $end
-$var wire 1 ,' pc_we $end
+$var wire 1 ,' pc_write_en $end
 $var wire 1 +' pc_mux $end
-$var wire 1 2$ load_val [5] $end
-$var wire 1 3$ load_val [4] $end
-$var wire 1 4$ load_val [3] $end
-$var wire 1 5$ load_val [2] $end
-$var wire 1 6$ load_val [1] $end
-$var wire 1 7$ load_val [0] $end
+$var wire 1 2$ offset_val [5] $end
+$var wire 1 3$ offset_val [4] $end
+$var wire 1 4$ offset_val [3] $end
+$var wire 1 5$ offset_val [2] $end
+$var wire 1 6$ offset_val [1] $end
+$var wire 1 7$ offset_val [0] $end
 $var wire 1 "$ pc_out [5] $end
 $var wire 1 #$ pc_out [4] $end
 $var wire 1 $$ pc_out [3] $end
 $var wire 1 %$ pc_out [2] $end
 $var wire 1 &$ pc_out [1] $end
 $var wire 1 '$ pc_out [0] $end
-$var reg 6 3' pc_reg [5:0] $end
+$var reg 6 3' pc_temp [5:0] $end
 $upscope $end
 
 $scope module imem $end
 $var wire 1 n# clk $end
-$var wire 1 "$ addr [5] $end
-$var wire 1 #$ addr [4] $end
-$var wire 1 $$ addr [3] $end
-$var wire 1 %$ addr [2] $end
-$var wire 1 &$ addr [1] $end
-$var wire 1 '$ addr [0] $end
+$var wire 1 "$ read_address [5] $end
+$var wire 1 #$ read_address [4] $end
+$var wire 1 $$ read_address [3] $end
+$var wire 1 %$ read_address [2] $end
+$var wire 1 &$ read_address [1] $end
+$var wire 1 '$ read_address [0] $end
 $var reg 16 4' data_out [15:0] $end
-$var wire 1 r& write_enable $end
-$var wire 1 L& write_addr [5] $end
-$var wire 1 M& write_addr [4] $end
-$var wire 1 N& write_addr [3] $end
-$var wire 1 O& write_addr [2] $end
-$var wire 1 P& write_addr [1] $end
-$var wire 1 Q& write_addr [0] $end
+$var wire 1 r& write_en $end
+$var wire 1 L& write_address [5] $end
+$var wire 1 M& write_address [4] $end
+$var wire 1 N& write_address [3] $end
+$var wire 1 O& write_address [2] $end
+$var wire 1 P& write_address [1] $end
+$var wire 1 Q& write_address [0] $end
 $var wire 1 p# write_data [15] $end
 $var wire 1 q# write_data [14] $end
 $var wire 1 r# write_data [13] $end
@@ -972,14 +972,14 @@ $var integer 32 5' i $end
 $upscope $end
 
 $scope module decoder $end
-$var wire 1 ($ instr [7] $end
-$var wire 1 )$ instr [6] $end
-$var wire 1 *$ instr [5] $end
-$var wire 1 +$ instr [4] $end
-$var wire 1 ,$ instr [3] $end
-$var wire 1 -$ instr [2] $end
-$var wire 1 .$ instr [1] $end
-$var wire 1 /$ instr [0] $end
+$var wire 1 ($ cmem_in [7] $end
+$var wire 1 )$ cmem_in [6] $end
+$var wire 1 *$ cmem_in [5] $end
+$var wire 1 +$ cmem_in [4] $end
+$var wire 1 ,$ cmem_in [3] $end
+$var wire 1 -$ cmem_in [2] $end
+$var wire 1 .$ cmem_in [1] $end
+$var wire 1 /$ cmem_in [0] $end
 $var wire 1 Z% opcode [26] $end
 $var wire 1 [% opcode [25] $end
 $var wire 1 \% opcode [24] $end
@@ -1067,11 +1067,11 @@ $var wire 1 X& y [2] $end
 $var wire 1 Y& y [1] $end
 $var wire 1 Z& y [0] $end
 $var wire 1 n# clk $end
-$var wire 1 R& c14 $end
-$var reg 1 N' tcarryflag $end
-$var reg 1 O' tnegativeflag $end
-$var reg 1 P' toverflowflag $end
-$var reg 1 Q' tzeroflag $end
+$var wire 1 R& flag_write_en $end
+$var reg 1 N' carryflag_temp $end
+$var reg 1 O' negativeflag_temp $end
+$var reg 1 P' overflowflag_temp $end
+$var reg 1 Q' zeroflag_temp $end
 $upscope $end
 
 $scope module control_unit $end
@@ -1114,7 +1114,7 @@ $var reg 2 V' reg_port1_sel [1:0] $end
 $var reg 2 W' reg_write_sel [1:0] $end
 $var reg 1 X' reg_write_en $end
 $var reg 1 Y' alu_src_mux $end
-$var reg 2 Z' alu_op [1:0] $end
+$var reg 2 Z' alu_select [1:0] $end
 $var reg 1 [' flag_write_en $end
 $var reg 1 \' alu_result_mux $end
 $var reg 1 ]' dmem_input_mux $end
@@ -1312,27 +1312,27 @@ $var wire 1 >& b [3] $end
 $var wire 1 ?& b [2] $end
 $var wire 1 @& b [1] $end
 $var wire 1 A& b [0] $end
-$var wire 1 8& op [1] $end
-$var wire 1 9& op [0] $end
-$var reg 8 D( result [7:0] $end
+$var wire 1 8& ALU_select [1] $end
+$var wire 1 9& ALU_select [0] $end
+$var reg 8 D( ALU_result [7:0] $end
 $var reg 1 E( carry $end
 $var reg 1 F( overflow $end
 $var wire 1 U& negative $end
 $var wire 1 V& zero $end
-$var reg 8 G( a_u [7:0] $end
-$var reg 8 H( b_u [7:0] $end
-$var reg 8 I( res_u [7:0] $end
-$var reg 1 J( carry_s $end
-$var reg 1 K( ov_s $end
+$var reg 8 G( a_temp [7:0] $end
+$var reg 8 H( b_temp [7:0] $end
+$var reg 8 I( res_temp [7:0] $end
+$var reg 1 J( signed_carry $end
+$var reg 1 K( signed_overflow $end
 $var reg 9 L( tmp [8:0] $end
 $upscope $end
 
 $scope module dmem $end
 $var wire 1 n# clk $end
-$var wire 1 N& addr [3] $end
-$var wire 1 O& addr [2] $end
-$var wire 1 P& addr [1] $end
-$var wire 1 Q& addr [0] $end
+$var wire 1 N& address [3] $end
+$var wire 1 O& address [2] $end
+$var wire 1 P& address [1] $end
+$var wire 1 Q& address [0] $end
 $var wire 1 b& data_in [7] $end
 $var wire 1 c& data_in [6] $end
 $var wire 1 d& data_in [5] $end
@@ -1341,7 +1341,7 @@ $var wire 1 f& data_in [3] $end
 $var wire 1 g& data_in [2] $end
 $var wire 1 h& data_in [1] $end
 $var wire 1 i& data_in [0] $end
-$var wire 1 ]& write_enable $end
+$var wire 1 ]& write_en $end
 $var wire 1 j& data_out [7] $end
 $var wire 1 k& data_out [6] $end
 $var wire 1 l& data_out [5] $end
@@ -1350,197 +1350,198 @@ $var wire 1 n& data_out [3] $end
 $var wire 1 o& data_out [2] $end
 $var wire 1 p& data_out [1] $end
 $var wire 1 q& data_out [0] $end
-$var wire 1 8$ data_led [127] $end
-$var wire 1 9$ data_led [126] $end
-$var wire 1 :$ data_led [125] $end
-$var wire 1 ;$ data_led [124] $end
-$var wire 1 <$ data_led [123] $end
-$var wire 1 =$ data_led [122] $end
-$var wire 1 >$ data_led [121] $end
-$var wire 1 ?$ data_led [120] $end
-$var wire 1 @$ data_led [119] $end
-$var wire 1 A$ data_led [118] $end
-$var wire 1 B$ data_led [117] $end
-$var wire 1 C$ data_led [116] $end
-$var wire 1 D$ data_led [115] $end
-$var wire 1 E$ data_led [114] $end
-$var wire 1 F$ data_led [113] $end
-$var wire 1 G$ data_led [112] $end
-$var wire 1 H$ data_led [111] $end
-$var wire 1 I$ data_led [110] $end
-$var wire 1 J$ data_led [109] $end
-$var wire 1 K$ data_led [108] $end
-$var wire 1 L$ data_led [107] $end
-$var wire 1 M$ data_led [106] $end
-$var wire 1 N$ data_led [105] $end
-$var wire 1 O$ data_led [104] $end
-$var wire 1 P$ data_led [103] $end
-$var wire 1 Q$ data_led [102] $end
-$var wire 1 R$ data_led [101] $end
-$var wire 1 S$ data_led [100] $end
-$var wire 1 T$ data_led [99] $end
-$var wire 1 U$ data_led [98] $end
-$var wire 1 V$ data_led [97] $end
-$var wire 1 W$ data_led [96] $end
-$var wire 1 X$ data_led [95] $end
-$var wire 1 Y$ data_led [94] $end
-$var wire 1 Z$ data_led [93] $end
-$var wire 1 [$ data_led [92] $end
-$var wire 1 \$ data_led [91] $end
-$var wire 1 ]$ data_led [90] $end
-$var wire 1 ^$ data_led [89] $end
-$var wire 1 _$ data_led [88] $end
-$var wire 1 `$ data_led [87] $end
-$var wire 1 a$ data_led [86] $end
-$var wire 1 b$ data_led [85] $end
-$var wire 1 c$ data_led [84] $end
-$var wire 1 d$ data_led [83] $end
-$var wire 1 e$ data_led [82] $end
-$var wire 1 f$ data_led [81] $end
-$var wire 1 g$ data_led [80] $end
-$var wire 1 h$ data_led [79] $end
-$var wire 1 i$ data_led [78] $end
-$var wire 1 j$ data_led [77] $end
-$var wire 1 k$ data_led [76] $end
-$var wire 1 l$ data_led [75] $end
-$var wire 1 m$ data_led [74] $end
-$var wire 1 n$ data_led [73] $end
-$var wire 1 o$ data_led [72] $end
-$var wire 1 p$ data_led [71] $end
-$var wire 1 q$ data_led [70] $end
-$var wire 1 r$ data_led [69] $end
-$var wire 1 s$ data_led [68] $end
-$var wire 1 t$ data_led [67] $end
-$var wire 1 u$ data_led [66] $end
-$var wire 1 v$ data_led [65] $end
-$var wire 1 w$ data_led [64] $end
-$var wire 1 x$ data_led [63] $end
-$var wire 1 y$ data_led [62] $end
-$var wire 1 z$ data_led [61] $end
-$var wire 1 {$ data_led [60] $end
-$var wire 1 |$ data_led [59] $end
-$var wire 1 }$ data_led [58] $end
-$var wire 1 ~$ data_led [57] $end
-$var wire 1 !% data_led [56] $end
-$var wire 1 "% data_led [55] $end
-$var wire 1 #% data_led [54] $end
-$var wire 1 $% data_led [53] $end
-$var wire 1 %% data_led [52] $end
-$var wire 1 &% data_led [51] $end
-$var wire 1 '% data_led [50] $end
-$var wire 1 (% data_led [49] $end
-$var wire 1 )% data_led [48] $end
-$var wire 1 *% data_led [47] $end
-$var wire 1 +% data_led [46] $end
-$var wire 1 ,% data_led [45] $end
-$var wire 1 -% data_led [44] $end
-$var wire 1 .% data_led [43] $end
-$var wire 1 /% data_led [42] $end
-$var wire 1 0% data_led [41] $end
-$var wire 1 1% data_led [40] $end
-$var wire 1 2% data_led [39] $end
-$var wire 1 3% data_led [38] $end
-$var wire 1 4% data_led [37] $end
-$var wire 1 5% data_led [36] $end
-$var wire 1 6% data_led [35] $end
-$var wire 1 7% data_led [34] $end
-$var wire 1 8% data_led [33] $end
-$var wire 1 9% data_led [32] $end
-$var wire 1 :% data_led [31] $end
-$var wire 1 ;% data_led [30] $end
-$var wire 1 <% data_led [29] $end
-$var wire 1 =% data_led [28] $end
-$var wire 1 >% data_led [27] $end
-$var wire 1 ?% data_led [26] $end
-$var wire 1 @% data_led [25] $end
-$var wire 1 A% data_led [24] $end
-$var wire 1 B% data_led [23] $end
-$var wire 1 C% data_led [22] $end
-$var wire 1 D% data_led [21] $end
-$var wire 1 E% data_led [20] $end
-$var wire 1 F% data_led [19] $end
-$var wire 1 G% data_led [18] $end
-$var wire 1 H% data_led [17] $end
-$var wire 1 I% data_led [16] $end
-$var wire 1 J% data_led [15] $end
-$var wire 1 K% data_led [14] $end
-$var wire 1 L% data_led [13] $end
-$var wire 1 M% data_led [12] $end
-$var wire 1 N% data_led [11] $end
-$var wire 1 O% data_led [10] $end
-$var wire 1 P% data_led [9] $end
-$var wire 1 Q% data_led [8] $end
-$var wire 1 R% data_led [7] $end
-$var wire 1 S% data_led [6] $end
-$var wire 1 T% data_led [5] $end
-$var wire 1 U% data_led [4] $end
-$var wire 1 V% data_led [3] $end
-$var wire 1 W% data_led [2] $end
-$var wire 1 X% data_led [1] $end
-$var wire 1 Y% data_led [0] $end
+$var wire 1 8$ data_output [127] $end
+$var wire 1 9$ data_output [126] $end
+$var wire 1 :$ data_output [125] $end
+$var wire 1 ;$ data_output [124] $end
+$var wire 1 <$ data_output [123] $end
+$var wire 1 =$ data_output [122] $end
+$var wire 1 >$ data_output [121] $end
+$var wire 1 ?$ data_output [120] $end
+$var wire 1 @$ data_output [119] $end
+$var wire 1 A$ data_output [118] $end
+$var wire 1 B$ data_output [117] $end
+$var wire 1 C$ data_output [116] $end
+$var wire 1 D$ data_output [115] $end
+$var wire 1 E$ data_output [114] $end
+$var wire 1 F$ data_output [113] $end
+$var wire 1 G$ data_output [112] $end
+$var wire 1 H$ data_output [111] $end
+$var wire 1 I$ data_output [110] $end
+$var wire 1 J$ data_output [109] $end
+$var wire 1 K$ data_output [108] $end
+$var wire 1 L$ data_output [107] $end
+$var wire 1 M$ data_output [106] $end
+$var wire 1 N$ data_output [105] $end
+$var wire 1 O$ data_output [104] $end
+$var wire 1 P$ data_output [103] $end
+$var wire 1 Q$ data_output [102] $end
+$var wire 1 R$ data_output [101] $end
+$var wire 1 S$ data_output [100] $end
+$var wire 1 T$ data_output [99] $end
+$var wire 1 U$ data_output [98] $end
+$var wire 1 V$ data_output [97] $end
+$var wire 1 W$ data_output [96] $end
+$var wire 1 X$ data_output [95] $end
+$var wire 1 Y$ data_output [94] $end
+$var wire 1 Z$ data_output [93] $end
+$var wire 1 [$ data_output [92] $end
+$var wire 1 \$ data_output [91] $end
+$var wire 1 ]$ data_output [90] $end
+$var wire 1 ^$ data_output [89] $end
+$var wire 1 _$ data_output [88] $end
+$var wire 1 `$ data_output [87] $end
+$var wire 1 a$ data_output [86] $end
+$var wire 1 b$ data_output [85] $end
+$var wire 1 c$ data_output [84] $end
+$var wire 1 d$ data_output [83] $end
+$var wire 1 e$ data_output [82] $end
+$var wire 1 f$ data_output [81] $end
+$var wire 1 g$ data_output [80] $end
+$var wire 1 h$ data_output [79] $end
+$var wire 1 i$ data_output [78] $end
+$var wire 1 j$ data_output [77] $end
+$var wire 1 k$ data_output [76] $end
+$var wire 1 l$ data_output [75] $end
+$var wire 1 m$ data_output [74] $end
+$var wire 1 n$ data_output [73] $end
+$var wire 1 o$ data_output [72] $end
+$var wire 1 p$ data_output [71] $end
+$var wire 1 q$ data_output [70] $end
+$var wire 1 r$ data_output [69] $end
+$var wire 1 s$ data_output [68] $end
+$var wire 1 t$ data_output [67] $end
+$var wire 1 u$ data_output [66] $end
+$var wire 1 v$ data_output [65] $end
+$var wire 1 w$ data_output [64] $end
+$var wire 1 x$ data_output [63] $end
+$var wire 1 y$ data_output [62] $end
+$var wire 1 z$ data_output [61] $end
+$var wire 1 {$ data_output [60] $end
+$var wire 1 |$ data_output [59] $end
+$var wire 1 }$ data_output [58] $end
+$var wire 1 ~$ data_output [57] $end
+$var wire 1 !% data_output [56] $end
+$var wire 1 "% data_output [55] $end
+$var wire 1 #% data_output [54] $end
+$var wire 1 $% data_output [53] $end
+$var wire 1 %% data_output [52] $end
+$var wire 1 &% data_output [51] $end
+$var wire 1 '% data_output [50] $end
+$var wire 1 (% data_output [49] $end
+$var wire 1 )% data_output [48] $end
+$var wire 1 *% data_output [47] $end
+$var wire 1 +% data_output [46] $end
+$var wire 1 ,% data_output [45] $end
+$var wire 1 -% data_output [44] $end
+$var wire 1 .% data_output [43] $end
+$var wire 1 /% data_output [42] $end
+$var wire 1 0% data_output [41] $end
+$var wire 1 1% data_output [40] $end
+$var wire 1 2% data_output [39] $end
+$var wire 1 3% data_output [38] $end
+$var wire 1 4% data_output [37] $end
+$var wire 1 5% data_output [36] $end
+$var wire 1 6% data_output [35] $end
+$var wire 1 7% data_output [34] $end
+$var wire 1 8% data_output [33] $end
+$var wire 1 9% data_output [32] $end
+$var wire 1 :% data_output [31] $end
+$var wire 1 ;% data_output [30] $end
+$var wire 1 <% data_output [29] $end
+$var wire 1 =% data_output [28] $end
+$var wire 1 >% data_output [27] $end
+$var wire 1 ?% data_output [26] $end
+$var wire 1 @% data_output [25] $end
+$var wire 1 A% data_output [24] $end
+$var wire 1 B% data_output [23] $end
+$var wire 1 C% data_output [22] $end
+$var wire 1 D% data_output [21] $end
+$var wire 1 E% data_output [20] $end
+$var wire 1 F% data_output [19] $end
+$var wire 1 G% data_output [18] $end
+$var wire 1 H% data_output [17] $end
+$var wire 1 I% data_output [16] $end
+$var wire 1 J% data_output [15] $end
+$var wire 1 K% data_output [14] $end
+$var wire 1 L% data_output [13] $end
+$var wire 1 M% data_output [12] $end
+$var wire 1 N% data_output [11] $end
+$var wire 1 O% data_output [10] $end
+$var wire 1 P% data_output [9] $end
+$var wire 1 Q% data_output [8] $end
+$var wire 1 R% data_output [7] $end
+$var wire 1 S% data_output [6] $end
+$var wire 1 T% data_output [5] $end
+$var wire 1 U% data_output [4] $end
+$var wire 1 V% data_output [3] $end
+$var wire 1 W% data_output [2] $end
+$var wire 1 X% data_output [1] $end
+$var wire 1 Y% data_output [0] $end
+$var integer 32 M( j $end
 
 $scope begin LED_PACK[15] $end
-$var parameter 32 M( i $end
-$upscope $end
-
-$scope begin LED_PACK[14] $end
 $var parameter 32 N( i $end
 $upscope $end
 
-$scope begin LED_PACK[13] $end
+$scope begin LED_PACK[14] $end
 $var parameter 32 O( i $end
 $upscope $end
 
-$scope begin LED_PACK[12] $end
+$scope begin LED_PACK[13] $end
 $var parameter 32 P( i $end
 $upscope $end
 
-$scope begin LED_PACK[11] $end
+$scope begin LED_PACK[12] $end
 $var parameter 32 Q( i $end
 $upscope $end
 
-$scope begin LED_PACK[10] $end
+$scope begin LED_PACK[11] $end
 $var parameter 32 R( i $end
 $upscope $end
 
-$scope begin LED_PACK[9] $end
+$scope begin LED_PACK[10] $end
 $var parameter 32 S( i $end
 $upscope $end
 
-$scope begin LED_PACK[8] $end
+$scope begin LED_PACK[9] $end
 $var parameter 32 T( i $end
 $upscope $end
 
-$scope begin LED_PACK[7] $end
+$scope begin LED_PACK[8] $end
 $var parameter 32 U( i $end
 $upscope $end
 
-$scope begin LED_PACK[6] $end
+$scope begin LED_PACK[7] $end
 $var parameter 32 V( i $end
 $upscope $end
 
-$scope begin LED_PACK[5] $end
+$scope begin LED_PACK[6] $end
 $var parameter 32 W( i $end
 $upscope $end
 
-$scope begin LED_PACK[4] $end
+$scope begin LED_PACK[5] $end
 $var parameter 32 X( i $end
 $upscope $end
 
-$scope begin LED_PACK[3] $end
+$scope begin LED_PACK[4] $end
 $var parameter 32 Y( i $end
 $upscope $end
 
-$scope begin LED_PACK[2] $end
+$scope begin LED_PACK[3] $end
 $var parameter 32 Z( i $end
 $upscope $end
 
-$scope begin LED_PACK[1] $end
+$scope begin LED_PACK[2] $end
 $var parameter 32 [( i $end
 $upscope $end
 
-$scope begin LED_PACK[0] $end
+$scope begin LED_PACK[1] $end
 $var parameter 32 \( i $end
+$upscope $end
+
+$scope begin LED_PACK[0] $end
+$var parameter 32 ]( i $end
 $upscope $end
 $upscope $end
 $upscope $end
@@ -1714,24 +1715,25 @@ b0 I(
 0J(
 0K(
 bx L(
-b0 \(
-b1 [(
-b10 Z(
-b11 Y(
-b100 X(
-b101 W(
-b110 V(
-b111 U(
-b1000 T(
-b1001 S(
-b1010 R(
-b1011 Q(
-b1100 P(
-b1101 O(
-b1110 N(
-b1111 M(
+b0 ](
+b1 \(
+b10 [(
+b11 Z(
+b100 Y(
+b101 X(
+b110 W(
+b111 V(
+b1000 U(
+b1001 T(
+b1010 S(
+b1011 R(
+b1100 Q(
+b1101 P(
+b1110 O(
+b1111 N(
 b1000000 5'
 b11111111111111111111111111111111 B(
+b10000 M(
 z>
 z=
 z<

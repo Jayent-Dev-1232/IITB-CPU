@@ -1,4 +1,4 @@
-module encoder_31_to_5 (
+module enc_31_to_5 (
     input  wire [30:0] in_vec,
     output reg  [4:0]  code
 );

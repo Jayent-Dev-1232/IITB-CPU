@@ -1,4 +1,4 @@
-module decoder_4_to_16 (
+module dec_4_to_16 (
     input  wire [3:0] w,
     input  wire       en,
     output reg  [15:0] y
