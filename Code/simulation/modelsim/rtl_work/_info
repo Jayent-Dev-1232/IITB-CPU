@@ -1,0 +1,318 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/IITB/3rd_Semester/IITB-CPU/Code/Final/simulation/modelsim
+valu
+Z1 !s110 1763981438
+!i10b 1
+!s100 lKe^ClK25`4?VMa2[a1<M2
+I9aV=@edI8ZL_IlUYI]5IF2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1763912003
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Final/alu.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Final/alu.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1763981438.000000
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Final/alu.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final|E:/IITB/3rd_Semester/IITB-CPU/Code/Final/alu.v|
+!i113 1
+Z5 o-vlog01compat -work work
+Z6 !s92 -vlog01compat -work work +incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final
+Z7 tCvgOpt 0
+vcode_mem
+R1
+!i10b 1
+!s100 R9A9]bH^BK>Q>421BBcF<0
+IOOBmRahC^8?odXiWUVD]h0
+R2
+R0
+w1763918226
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Final/code_mem.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Final/code_mem.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Final/code_mem.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final|E:/IITB/3rd_Semester/IITB-CPU/Code/Final/code_mem.v|
+!i113 1
+R5
+R6
+R7
+vcontrol_unit
+R1
+!i10b 1
+!s100 _0ZT>6lk]TBG5edmiCWE03
+InIR?M;7oJ^a2h2XfK@04O0
+R2
+R0
+w1763917998
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Final/control_unit.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Final/control_unit.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Final/control_unit.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final|E:/IITB/3rd_Semester/IITB-CPU/Code/Final/control_unit.v|
+!i113 1
+R5
+R6
+R7
+vcpu
+R1
+!i10b 1
+!s100 T?RbZA60U<l6^mJI^Ic;f3
+IGAX8hWXL?:jb4HElfzXG33
+R2
+R0
+w1763918263
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final|E:/IITB/3rd_Semester/IITB-CPU/Code/Final/cpu.v|
+!i113 1
+R5
+R6
+R7
+vdata_mem
+Z8 !s110 1763981437
+!i10b 1
+!s100 [IEV^h12hej]I8]KmgF5O3
+IBa9Qz9U`bS3cV:Xkcc8RX3
+R2
+R0
+w1763918211
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Final/data_mem.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Final/data_mem.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z9 !s108 1763981437.000000
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Final/data_mem.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final|E:/IITB/3rd_Semester/IITB-CPU/Code/Final/data_mem.v|
+!i113 1
+R5
+R6
+R7
+vdec_1_to_2
+R8
+!i10b 1
+!s100 ]j];PT]feziRW>@TKQ7Y?2
+IP>bUXfgV=7YdGXMN=FY383
+R2
+R0
+w1763918034
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_1_to_2.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_1_to_2.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_1_to_2.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final|E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_1_to_2.v|
+!i113 1
+R5
+R6
+R7
+vdec_2_to_4
+R8
+!i10b 1
+!s100 IO^>ITzA7I[3jm_>mYOCF1
+I0G_Sg2bR:3_J^^Y6H5h`[0
+R2
+R0
+w1763918027
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_2_to_4.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_2_to_4.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_2_to_4.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final|E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_2_to_4.v|
+!i113 1
+R5
+R6
+R7
+vdec_4_to_16
+R8
+!i10b 1
+!s100 ie=YMTZcDc5XO0X?S_oaQ1
+IV4XToAAN5d4[eM<Z9Uh8E0
+R2
+R0
+w1763918041
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_4_to_16.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_4_to_16.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_4_to_16.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final|E:/IITB/3rd_Semester/IITB-CPU/Code/Final/dec_4_to_16.v|
+!i113 1
+R5
+R6
+R7
+venc_31_to_5
+R8
+!i10b 1
+!s100 de2IeVEB[EN4UPS5UhSkK1
+I]HUEcVo=>P@Vf^TXDFGFZ0
+R2
+R0
+w1763917934
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Final/enc_31_to_5.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Final/enc_31_to_5.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Final/enc_31_to_5.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final|E:/IITB/3rd_Semester/IITB-CPU/Code/Final/enc_31_to_5.v|
+!i113 1
+R5
+R6
+R7
+vflag_register
+R8
+!i10b 1
+!s100 DQ=4_IfQ5CR1Q[j^n86e93
+I=IJWNM195V9H_XCVJ?S590
+R2
+R0
+w1763917912
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Final/flag_register.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Final/flag_register.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Final/flag_register.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final|E:/IITB/3rd_Semester/IITB-CPU/Code/Final/flag_register.v|
+!i113 1
+R5
+R6
+R7
+vopcode_decoder
+R8
+!i10b 1
+!s100 HQLX@I<Hfn<ZhRTMn=<?S2
+Ie7Cg5`?FOT@NAg_eMD14z1
+R2
+R0
+w1763918088
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Final/opcode_decoder.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Final/opcode_decoder.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Final/opcode_decoder.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final|E:/IITB/3rd_Semester/IITB-CPU/Code/Final/opcode_decoder.v|
+!i113 1
+R5
+R6
+R7
+vprogram_counter
+R8
+!i10b 1
+!s100 :VZB4EX8b?:G@kZYCFBG82
+Iffa7;[Zbo]LL`Y^BL:KZm1
+R2
+R0
+w1763917868
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Final/program_counter.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Final/program_counter.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Final/program_counter.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final|E:/IITB/3rd_Semester/IITB-CPU/Code/Final/program_counter.v|
+!i113 1
+R5
+R6
+R7
+vregister_file
+R8
+!i10b 1
+!s100 C@a0jkhA2@442nMLG_cF81
+I_Te@JJe9mG`4fZ];l?8[20
+R2
+R0
+w1763904473
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Final/register_file.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Final/register_file.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Final/register_file.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final|E:/IITB/3rd_Semester/IITB-CPU/Code/Final/register_file.v|
+!i113 1
+R5
+R6
+R7
+vtb_load_and_run
+R1
+!i10b 1
+!s100 n^9SlV^oF8]Pm:0?OTQAZ3
+IPNBm3NBSRWZ8DWK43AWYi3
+R2
+R0
+w1763921390
+8E:/IITB/3rd_Semester/IITB-CPU/Code/Final/tb_load_and_run.v
+FE:/IITB/3rd_Semester/IITB-CPU/Code/Final/tb_load_and_run.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/IITB/3rd_Semester/IITB-CPU/Code/Final/tb_load_and_run.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/IITB/3rd_Semester/IITB-CPU/Code/Final|E:/IITB/3rd_Semester/IITB-CPU/Code/Final/tb_load_and_run.v|
+!i113 1
+R5
+R6
+R7
